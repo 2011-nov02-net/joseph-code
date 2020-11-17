@@ -1,0 +1,37 @@
+C#
+    set and get:
+    has default return behaviour?
+    may be modified for specific output/rules.
+
+.NET   (refer to dot-net-intro.txt)
+    Common Language Infrastructure (CLI):
+        .dll is an intermediate language (assembly) file
+        each project is built (uses Roslyn compiler) into a .dll file
+        Common Language Runtime (CLR) is a virtual machine which uses the JIT compiler to create executable local instructions
+        JIT compiler is used to generate native instructions for local CPU from .dll file
+    .NET Core 
+        a redesign of .NET Framework, more flexible to use 
+        Mono was another .NET framework, reverse engineered from Framework meant to run on UNIX (crosss platform)
+        .NET standard is common between all frameworks based on .NET, it includes base libraries
+            projects may be compiled using resources within .NET standard so that it will be usable between and .NET based framework
+            csproj file <TargetFramework> property sets the framework tergeted for the project
+        .NET Framework will be deprecated soon (next week)
+        .NET Core will be renamed to simply .NET (5.0)
+
+VS Studio
+    .NEt Core console app
+    default project location may be changed to c/Revature directory
+    uncheck place solution and property in same directory
+    use different name for solution (same name without .suffix)
+
+Workspace Specifics
+    solution
+        project
+            class
+                members
+    a solution is a bag of projects, to indicate that they should be "looked at" together (a list of pointers to projects)
+    solutions are not used in VS code but are necessary in VS
+
+
+    *look at shortcuts for generating properties (prop /t/t, propfull etc.)
+    *look at what happens when an exception is thrown 

@@ -11,7 +11,7 @@ namespace classes
 
         public decimal Balance 
         {
-            get
+            get 
             {
                 decimal balance = 0;
                 foreach (var item in allTransactions)
