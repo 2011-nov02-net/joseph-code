@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="anImage.jpg" alt="an image">
+    <h1> About </h1>
+    <h2>Our Location</h2>
+    <ul>
+        <li>USA</li>
+        <ul>
+            <li><a href="www.google.com">New York </a></li>
+            <li><a href="www.google.com">Columbus </a></li>
+            <li><a href="www.google.com">Austin </a></li>
+            <li><a href="www.google.com">Philly </a></li>
+        </ul>
+        <li>World</li>
+        <ul>
+            <li><a href="www.google.com">Ottawa </a></li>
+            <li><a href="www.google.com">Sydney </a></li>
+        </ul>
+    </ul>
+    <h2>Upcoming Classes</h2>
+    <table>
+        <tr>
+            <th>Location</th>
+            <th>Topic</th>
+        </tr>
+        <tr>
+            <td>New York</td>
+            <td>JavaScrip &amp; jQuery</td>
+        </tr>
+        <tr>
+            <td>San Francisco</td>
+            <td>HTML &amp; CSS</td>
+        </tr>
+    </table>
+    <h2>Sign Up!</h2>
+    <form action="">
+        <label for="name">Name: </label>
+        <input type="text" id="name" name="name"><br>
+
+        <label for="email">Email: </label>
+        <input type="text" id="email" name="email"><br>
+
+        <label for="location">Location: </label>
+        <select name="location" id="location">
+            <option value="sanFrancisco">San Francsico</option>
+            <option value="newYork">New York</option>
+        </select><br>
+
+        <label for="female"> Female </label>
+        <input type="radio" id="female" name="female" value="female">
+
+        <label for="male"> Male </label>
+        <input type="radio" id="male" name="male" value="male">
+
+        <fieldset style="border: 1px;">
+            <legend>Gender: </legend>
+
+        </fieldset>
+    </form>
+</body>
+
+</html>

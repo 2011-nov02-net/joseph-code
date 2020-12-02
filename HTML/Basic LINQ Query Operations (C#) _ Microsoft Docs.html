@@ -1,0 +1,1533 @@
+<!DOCTYPE html>
+<!-- saved from url=(0106)https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/basic-linq-query-operations -->
+<html class="hasSidebar hasPageActions hasBreadcrumb conceptual has-default-focus js-focus-visible theme-dark mathjax-complete" lang="en-us" dir="ltr" data-css-variable-support="true" data-authenticated="false" data-auth-status-determined="true" data-target="docs" x-ms-format-detection="none" data-js-focus-visible=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta property="og:title" content="Basic LINQ Query Operations (C#)">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/basic-linq-query-operations">
+			<meta property="og:description" content="Introduce yourself to LINQ query expressions and some of the operations you might perform in a query.">
+		<meta property="og:image" content="https://docs.microsoft.com/en-us/media/logos/logo-ms-social.png">
+		<meta property="og:image:alt" content="Microsoft Logo">
+
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:site" content="@docsmsft">
+
+
+	<meta name="apiPlatform" content="dotnet">
+<meta name="author" content="BillWagner">
+<meta name="breadcrumb_path" content="/dotnet/breadcrumb/toc.json">
+<meta name="depot_name" content="VS.core-docs">
+<meta name="description" content="Introduce yourself to LINQ query expressions and some of the operations you might perform in a query.">
+<meta name="document_id" content="35fe4344-db78-b520-a33d-228272ca3201">
+<meta name="document_version_independent_id" content="2e1c5463-8c13-07e0-3c04-f3986d1bef27">
+<meta name="gitcommit" content="https://github.com/dotnet/docs/blob/1fb8a0b8a2aae2398fd14c3457383e9389c6e011/docs/csharp/programming-guide/concepts/linq/basic-linq-query-operations.md">
+<meta name="locale" content="en-us">
+<meta name="ms.assetid" content="a7ea3421-1cf4-4df7-832a-aa22fe6379e9">
+<meta name="ms.author" content="wiwagn">
+<meta name="ms.date" content="07/20/2015">
+<meta name="ms.devlang" content="csharp">
+<meta name="ms.prod" content="dotnet-csharp">
+<meta name="ms.technology" content="csharp-linq">
+<meta name="ms.topic" content="conceptual">
+<meta name="original_content_git_url" content="https://github.com/dotnet/docs/blob/live/docs/csharp/programming-guide/concepts/linq/basic-linq-query-operations.md">
+<meta name="search.ms_docsetname" content="core-docs">
+<meta name="search.ms_product" content="VS">
+<meta name="search.ms_sitename" content="Docs">
+<meta name="show_latex" content="true">
+<meta name="site_name" content="Docs">
+<meta name="uhfHeaderId" content="MSDocsHeader-DotNet">
+<meta name="updated_at" content="2020-09-24 12:40 PM">
+<meta name="page_type" content="conceptual">
+<meta name="toc_rel" content="../../../toc.json">
+<meta name="pdf_url_template" content="https://docs.microsoft.com/pdfstore/en-us/VS.core-docs/{branchName}{pdfName}">
+<meta name="search.mshattr.devlang" content="csharp">
+<meta name="word_count" content="1030">
+
+
+	<meta name="scope" content=".NET">
+<link href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/basic-linq-query-operations" rel="canonical">
+	<title>Basic LINQ Query Operations (C#) | Microsoft Docs</title>
+
+		<link rel="stylesheet" href="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/14d44711.site-ltr.css">
+
+	<link rel="stylesheet" href="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/55917fe3.conceptual.css">
+
+
+	<script async="" defer="" crossorigin="anonymous" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/lux.js.download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/analytics.js.download"></script><script>
+	var msDocs = {
+		data: {
+			timeOrigin: Date.now(),
+			contentLocale: 'en-us',
+			contentDir: 'ltr',
+			userLocale: 'en-us',
+			userDir: 'ltr',
+			pageTemplate: 'Conceptual',
+			brand: '',
+			context: {
+
+			},
+			hasBinaryRating: true,
+			hasGithubIssues: true,
+			showFeedbackReport: false,
+			enableTutorialFeedback: false,
+			feedbackSystem: 'GitHub',
+			feedbackGitHubRepo: 'dotnet/docs',
+			feedbackProductUrl: 'https://aka.ms/feedback/report?space=61',
+			contentGitUrl: 'https://github.com/dotnet/docs/blob/master/docs/csharp/programming-guide/concepts/linq/basic-linq-query-operations.md',
+			extendBreadcrumb: false,
+			isEditDisplayable: true,
+			hideViewSource: false,
+			hasPageActions: true,
+			hasBookmark: true,
+			hasShare: true
+		},
+		functions:{}
+	};
+	</script>
+	<script nomodule="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/bluebird.min.js.download" integrity="sha384-aD4BDeDGeLXLpPK4yKeqtZQa9dv4a/7mQ+4L5vwshIYH1Mc2BrXvHd32iHzYCQy5" crossorigin="anonymous"></script>
+	<script nomodule="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/fetch.umd.min.js.download" integrity="sha384-EQIXrC5K2+7X8nGgLkB995I0/6jfAvvyG1ieZ+WYGxgJHFMD/alsG9fSDWvzb5Y1" crossorigin="anonymous"></script>
+	<script nomodule="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/template.min.js.download" integrity="sha384-1zKzI6ldTVHMU7n0W2HpE/lhHI+UG4D9IIaxbj3kT2UhCWicdTuJkTtnKuu0CQzN" crossorigin="anonymous"></script>
+	<script nomodule="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/url.min.js.download" integrity="sha384-vn7xBMtpSTfzaTRWxj0kVq0UcsbBrTOgZ/M1ISHqe1V358elYva+lfiEC+T8jLPc" crossorigin="anonymous"></script>
+	<script src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/298d06f8.index-polyfills.js.download"></script>
+		<script src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/9f3d7124.index-docs.js.download"></script><style></style><script src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/jsll-4.js.download" async="" defer=""></script><script src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/wcp-consent.js.download" async="" defer=""></script>
+<script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js.download"></script><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(1).download"></script><style type="text/css" media="print">.usabilla_live_button_container { display: none; }</style><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(2).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(3).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(4).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(5).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(6).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(7).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(8).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(9).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(10).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(11).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(12).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(13).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(14).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(15).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(16).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(17).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(18).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(19).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(20).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(21).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(22).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(23).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(24).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(25).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(26).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(27).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(28).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(29).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(30).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(31).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(32).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(33).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(34).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(35).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(36).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(37).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(38).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(39).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(40).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(41).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(42).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(43).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(44).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(45).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(46).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(47).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(48).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(49).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(50).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(51).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(52).download"></script><script async="" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/t.js(53).download"></script><script async="" src="https://web.vortex.data.microsoft.com/collect/v1/t.js?ver=%272.1%27&amp;name=%27Ms.Webi.ContentUpdate%27&amp;time=%272020-11-17T16%3A25%3A34.782Z%27&amp;os=%27Windows%27&amp;appId=%27JS%3ADocs%27&amp;-ver=%271.0%27&amp;-impressionGuid=%278fe69de9-85f3-42a7-80e7-9045898adb13%27&amp;-pageName=%2735fe4344-db78-b520-a33d-228272ca3201%27&amp;-uri=%27https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fdotnet%2Fcsharp%2Fprogramming-guide%2Fconcepts%2Flinq%2Fbasic-linq-query-operations%27&amp;-market=%27en-us%27&amp;-pageTags=%27%7B%22author%22%3A%22BillWagner%22%2C%22depotname%22%3A%22VS.core-docs%22%2C%22document_version_independent_id%22%3A%222e1c5463-8c13-07e0-3c04-f3986d1bef27%22%2C%22gitcommit%22%3A%22https%3A%2F%2Fgithub.com%2Fdotnet%2Fdocs%2Fblob%2F1fb8a0b8a2aae2398fd14c3457383e9389c6e011%2Fdocs%2Fcsharp%2Fprogramming-guide%2Fconcepts%2Flinq%2Fbasic-linq-query-operations.md%22%2C%22asst%22%3A%22a7ea3421-1cf4-4df7-832a-aa22fe6379e9%22%2C%22pgauth%22%3A%22wiwagn%22%2C%22date%22%3A%2207%2F20%2F2015%22%2C%22pgdevlng%22%3A%22csharp%22%2C%22product%22%3A%22dotnet-csharp%22%2C%22technology%22%3A%22csharp-linq%22%2C%22pgtop%22%3A%22conceptual%22%2C%22giturl%22%3A%22https%3A%2F%2Fgithub.com%2Fdotnet%2Fdocs%2Fblob%2Flive%2Fdocs%2Fcsharp%2Fprogramming-guide%2Fconcepts%2Flinq%2Fbasic-linq-query-operations.md%22%2C%22publishtime%22%3A%222020-09-24%2012%3A40%20PM%22%2C%22contentlocale%22%3A%22en-us%22%2C%22highContrast%22%3A%22false%22%2C%22metaTags%22%3A%7B%7D%7D%27&amp;-pageHeight=4535&amp;-vpHeight=912&amp;-vpWidth=1920&amp;-actionType=%27R%27&amp;-behavior=0&amp;-vScrollOffset=3400&amp;-hScrollOffset=0&amp;-contentVer=%272.0%27&amp;-content=%27%5B%5D%27&amp;*baseType=%27Ms.Content.ContentUpdate%27&amp;*title=%27Basic%20LINQ%20Query%20Operations%20(C%23)%20%7C%20Microsoft%20Docs%27&amp;*cookieEnabled=true&amp;*isJs=true&amp;*isDomComplete=false&amp;*isLoggedIn=false&amp;ext-javascript-ver=%271.1%27&amp;ext-javascript-libVer=%274.3.4%27&amp;ext-javascript-domain=%27docs.microsoft.com%27&amp;ext-javascript-msfpc=%27GUID%3D66928b00790a48bbb02518419e1ed2b7%26HASH%3D6692%26LV%3D202008%26V%3D4%26LU%3D1596934283883%27&amp;ext-javascript-userConsent=true&amp;ext-user-localId=%27t%3A39A28E1F32B56ACC0027830B36B56947%27&amp;$mscomCookies=false"></script></head>
+
+<body lang="en-us" dir="ltr"><div id="MathJax_Message" style="display: none;"></div><div style="display: none;" id="lightningjs-usabilla_live"><div><iframe frameborder="0" id="lightningjs-frame-usabilla_live" src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/saved_resource.html"></iframe></div></div>
+<div class="header-holder has-default-focus">
+	<a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/basic-linq-query-operations#main" class="skip-to-main-link has-outline-color-text visually-hidden-until-focused is-fixed has-inner-focus focus-visible has-top-zero has-left-zero has-right-zero has-padding-medium has-text-centered has-body-background-medium" tabindex="1">Skip to main content</a>
+	<div hidden="" id="cookie-consent-holder"></div>
+	<!-- liquid-tag banners global -->
+	<div id="headerAreaHolder" data-bi-name="header">
+<header role="banner" itemscope="itemscope" itemtype="http://schema.org/Organization"><!----> <div class="nav-bar"><!---->  <div class="nav-bar-brand">
+		<a class="nav-bar-button" itemprop="url" href="https://www.microsoft.com/" aria-label="Microsoft">
+			<div class="nav-bar-logo" role="presentation" aria-hidden="true" itemprop="logo" itemscope="itemscope">
+				<svg xmlns="http://www.w3.org/2000/svg" width="108" height="23" viewBox="72 72 337 74" preserveAspectRatio="xMidYMin slice">
+					<g data-name="MS-symbol">
+						<clippath id="a">
+							<path transform="matrix(1 0 0 -1 0 216)" d="M0 216h482V0H0z"></path>
+						</clippath>
+						<g clip-path="url(#a)">
+							<path class="has-fill-current-color has-text-subtle" d="M394.942 104.59h-10.858v25.003h-7.38V104.59h-5.182v-5.965h5.182v-4.308c0-3.254 1.06-5.92 3.178-7.998 2.12-2.079 4.835-3.118 8.15-3.118.882 0 1.666.045 2.35.135a9.37 9.37 0 011.806.407v6.296c-.24-.14-.663-.31-1.265-.512-.603-.2-1.296-.3-2.078-.3-1.528 0-2.702.476-3.526 1.43-.824.954-1.235 2.365-1.235 4.232v3.736h10.858v-6.959l7.321-2.229v9.188h7.381v5.965h-7.38v14.49c0 1.91.345 3.254 1.038 4.037.693.783 1.782 1.175 3.27 1.175.42 0 .927-.1 1.52-.3a7.178 7.178 0 001.552-.724v6.025c-.463.261-1.23.502-2.305.723a15.742 15.742 0 01-3.178.331c-3.073 0-5.378-.817-6.914-2.455-1.537-1.637-2.305-4.102-2.305-7.396zm-48.407 9.73c0 3.233.733 5.703 2.2 7.411 1.465 1.707 3.564 2.56 6.295 2.56 2.652 0 4.67-.853 6.055-2.56 1.386-1.708 2.08-4.238 2.08-7.592 0-3.334-.719-5.849-2.155-7.547-1.436-1.697-3.45-2.545-6.04-2.545-2.67 0-4.745.888-6.22 2.666-1.477 1.777-2.215 4.313-2.215 7.607m-7.592.24c0-5.12 1.446-9.177 4.338-12.17 2.892-2.993 6.91-4.489 12.05-4.489 4.841 0 8.621 1.441 11.343 4.323 2.721 2.883 4.082 6.774 4.082 11.674 0 5.021-1.447 9.018-4.338 11.99-2.892 2.973-6.829 4.458-11.81 4.458-4.8 0-8.61-1.41-11.432-4.232-2.822-2.82-4.233-6.673-4.233-11.554m-16.417-7.802c0 1.045.331 1.863.994 2.456.662.592 2.128 1.34 4.398 2.243 2.912 1.166 4.956 2.476 6.131 3.932 1.175 1.456 1.762 3.22 1.762 5.287 0 2.912-1.12 5.252-3.359 7.02-2.24 1.767-5.267 2.65-9.083 2.65-1.285 0-2.706-.155-4.263-.467-1.556-.31-2.877-.707-3.96-1.19v-7.169a17.945 17.945 0 004.277 2.198c1.526.543 2.911.814 4.157.814 1.647 0 2.862-.23 3.645-.693.784-.46 1.175-1.235 1.175-2.319 0-1.005-.406-1.853-1.22-2.546-.813-.693-2.355-1.492-4.624-2.395-2.69-1.125-4.599-2.39-5.724-3.796-1.125-1.406-1.687-3.193-1.687-5.362 0-2.792 1.11-5.086 3.33-6.884 2.217-1.797 5.095-2.696 8.63-2.696 1.084 0 2.3.12 3.645.361 1.346.242 2.47.553 3.374.934v6.93c-.964-.644-2.089-1.195-3.374-1.658-1.286-.462-2.56-.693-3.826-.693-1.386 0-2.465.271-3.238.813-.774.543-1.16 1.286-1.16 2.23m-35.066 7.562c0 3.233.733 5.703 2.2 7.411 1.465 1.707 3.564 2.56 6.295 2.56 2.652 0 4.67-.853 6.055-2.56 1.386-1.708 2.08-4.238 2.08-7.592 0-3.334-.719-5.849-2.155-7.547-1.436-1.697-3.449-2.545-6.039-2.545-2.672 0-4.745.888-6.222 2.666-1.476 1.777-2.214 4.313-2.214 7.607m-7.592.24c0-5.12 1.446-9.177 4.338-12.17 2.893-2.993 6.91-4.489 12.051-4.489 4.84 0 8.621 1.441 11.342 4.323 2.721 2.883 4.082 6.774 4.082 11.674 0 5.021-1.446 9.018-4.338 11.99-2.892 2.973-6.828 4.458-11.809 4.458-4.8 0-8.61-1.41-11.433-4.232-2.822-2.82-4.233-6.673-4.233-11.554m-3.136-16.448c.582 0 1.105.041 1.567.121.462.08.853.18 1.175.301v7.38c-.382-.28-.939-.546-1.672-.798-.733-.25-1.622-.376-2.666-.376-1.788 0-3.299.753-4.534 2.26-1.235 1.505-1.853 3.825-1.853 6.958v15.635h-7.29V98.624h7.29v4.88h.12c.663-1.687 1.667-3.007 3.013-3.96 1.346-.954 2.962-1.432 4.85-1.432m-27.956 26.18c1.084 0 2.28-.25 3.585-.754a15.06 15.06 0 003.615-1.988v6.778c-1.165.663-2.485 1.165-3.962 1.506-1.475.342-3.098.512-4.865.512-4.559 0-8.265-1.44-11.116-4.323-2.852-2.88-4.278-6.562-4.278-11.04 0-4.98 1.456-9.083 4.37-12.307 2.91-3.224 7.037-4.835 12.38-4.835 1.366 0 2.746.176 4.143.527 1.395.352 2.504.758 3.328 1.22v6.99c-1.125-.824-2.274-1.462-3.45-1.914a9.966 9.966 0 00-3.599-.678c-2.872 0-5.192.934-6.959 2.802-1.768 1.868-2.652 4.388-2.652 7.562 0 3.132.85 5.573 2.546 7.32 1.697 1.748 4.002 2.621 6.914 2.621m-22.112 5.302h-7.29V98.624h7.29zm-8.044-39.916c0-1.205.437-2.214 1.311-3.028.874-.813 1.913-1.22 3.118-1.22 1.285 0 2.35.417 3.193 1.25.844.834 1.266 1.833 1.266 2.998 0 1.185-.432 2.18-1.296 2.982-.864.804-1.918 1.205-3.163 1.205-1.246 0-2.295-.406-3.148-1.219-.854-.815-1.28-1.803-1.28-2.968m-6.274-3.284v43.2h-7.5v-33.86h-.12l-13.408 33.86h-4.97l-13.738-33.86h-.09v33.86h-6.929v-43.2h10.755l12.412 32.024h.18l13.105-32.024z"></path>
+							<path d="M106.214 106.214H71.996V71.996h34.218z" fill="#f25022"></path>
+							<path d="M143.993 106.214h-34.218V71.996h34.218z" fill="#7fba00"></path>
+							<path d="M106.214 143.993H71.996v-34.218h34.218z" fill="#00a4ef"></path>
+							<path d="M143.993 143.993h-34.218v-34.218h34.218z" fill="#ffb900"></path>
+						</g>
+					</g>
+				</svg>
+			</div>
+		</a>
+	</div> 
+			
+		<div class="nav-bar-item is-hidden-tablet">
+			<div class="nav-bar-menu">
+				<button class="nav-bar-button is-title" title="Global navigation" aria-expanded="false">
+					<span class="nav-bar-menu-title"><!---->Documentation<!----></span>
+					<div class="nav-bar-burger">
+						<span></span>
+						<span></span>
+						<span></span>
+						<span class="nav-bar-burger-label"><!---->Global navigation<!----></span>
+					</div>
+				</button>
+			</div>
+		</div>
+	
+			
+		<nav class="nav-bar-nav" role="navigation" aria-label="Global">
+			<ul class="nav-bar-nav-list">
+				
+		<li class="nav-bar-item is-category">
+			<a class="nav-bar-button is-title has-hover-underline" itemprop="url" href="https://docs.microsoft.com/en-us/">
+				<span><!---->Docs<!----></span>
+			</a>
+		</li>
+	
+				<!----> <li class="nav-bar-item">
+				<a class="nav-bar-button has-hover-underline is-active" href="https://docs.microsoft.com/en-us/documentation">
+					<span><!---->Documentation<!----></span>
+				</a>
+		  </li><!----> <li class="nav-bar-item">
+				<a class="nav-bar-button has-hover-underline " href="https://docs.microsoft.com/en-us/learn/">
+					<span><!---->Learn<!----></span>
+				</a>
+		  </li><!----> <li class="nav-bar-item">
+				<a class="nav-bar-button has-hover-underline " href="https://docs.microsoft.com/en-us/answers/products/">
+					<span><!---->Q&amp;A<!----></span>
+				</a>
+		  </li><!----> <li class="nav-bar-item">
+				<a class="nav-bar-button has-hover-underline " href="https://docs.microsoft.com/en-us/samples/browse/">
+					<span><!---->Code Samples<!----></span>
+				</a>
+		  </li><!----> <li class="dropdown nav-bar-item" hidden="">
+		<button aria-expanded="false" class="dropdown-trigger nav-bar-button  has-hover-underline" aria-controls="ax-134">
+			<span><!---->More<!----></span>
+			<span class="nav-bar-button-chevron" aria-hidden="true">
+				<span class="docon docon-chevron-down-light expanded-indicator"></span>
+			</span>
+		</button>
+		<ul class="dropdown-menu" id="ax-134" aria-label="More">
+			<!---->
+				<li class="nav-bar-item" hidden="">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/en-us/documentation"><!---->Documentation<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item" hidden="">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/en-us/learn/"><!---->Learn<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item" hidden="">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/en-us/answers/products/"><!---->Q&amp;A<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item" hidden="">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/en-us/samples/browse/"><!---->Code Samples<!----></a>
+				</li>
+		  <!---->
+		</ul>
+	</li><!---->
+			</ul>
+		</nav>
+	
+			<span class="nav-bar-spacer"></span>
+			
+		<div class="nav-bar-search " id="ax-135" hidden="">
+			
+		<form class="nav-bar-search-form" method="GET" name="nav-bar-search-form" role="search" id="nav-bar-search-form" aria-label="Search" aria-expanded="false" action="https://docs.microsoft.com/en-us/search/">
+			<div class="autocomplete" data-bi-name="autocomplete"><!----> <div class="control ">
+				<input role="combobox" maxlength="100" aria-autocomplete="list" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" id="site-search-input" class="autocomplete-input input   is-small" type="search" name="terms" aria-expanded="false" aria-owns="ax-136-listbox" aria-activedescendant="" aria-label="Search" placeholder="Search">
+
+				<span aria-hidden="true" class="icon is-small is-left" hidden="">
+					<span class="has-text-primary docon docon-undefined"></span>
+				</span>
+
+				<span aria-hidden="true" class="autocomplete-loader loader has-text-primary " hidden=""></span>
+			</div>
+
+			<ul class="autocomplete-suggestions is-vertically-scrollable" role="listbox" id="ax-136-listbox" aria-label="site-search-input-suggestions" hidden="">
+				
+			</ul><!----></div>
+			<!-- mobile safari will not dispatch submit event unless there's a submit button that is not display:none -->
+			<button type="submit" class="visually-hidden" tabindex="-1" aria-hidden="true"></button>
+			<input name="category" hidden="" value="">
+			<input name="scope" hidden="" value=".NET">
+			
+			
+		</form>
+	
+		</div>
+		
+					<div class="nav-bar-search">
+						<!-- hidden when the width drops to tablet -->
+						
+		<form class="nav-bar-search-form" method="GET" name="nav-bar-search-form" role="search" id="nav-bar-search-form-desktop" aria-label="Search" aria-expanded="false" action="https://docs.microsoft.com/en-us/search/">
+			<div class="autocomplete" data-bi-name="autocomplete"><!----> <div class="control has-icons-left">
+				<input role="combobox" maxlength="100" aria-autocomplete="list" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" id="ax-137" class="autocomplete-input input control has-icons-left  is-small" type="search" name="terms" aria-expanded="false" aria-owns="ax-138-listbox" aria-activedescendant="" aria-label="Search" placeholder="Search">
+
+				<span aria-hidden="true" class="icon is-small is-left">
+					<span class="has-text-primary docon docon-search"></span>
+				</span>
+
+				<span aria-hidden="true" class="autocomplete-loader loader has-text-primary " hidden=""></span>
+			</div>
+
+			<ul class="autocomplete-suggestions is-vertically-scrollable" role="listbox" id="ax-138-listbox" aria-label="ax-137-suggestions" hidden="">
+				
+			</ul><!----></div>
+			<!-- mobile safari will not dispatch submit event unless there's a submit button that is not display:none -->
+			<button type="submit" class="visually-hidden" tabindex="-1" aria-hidden="true"></button>
+			<input name="category" hidden="" value="">
+			<input name="scope" hidden="" value=".NET">
+			
+			
+		</form>
+	
+					</div>
+			  
+		<div class="nav-bar-search " hidden="">
+			<div class="nav-bar-search-form-expander">
+				<button id="form-expander" class="nav-bar-button has-hover-underline " title="Search" aria-expanded="false" aria-controls="ax-135">
+					
+		<span class="is-visually-hidden-mobile"><!---->Search<!----></span>
+		<span class="icon" aria-hidden="true">
+			<span class="docon docon-search"></span>
+		</span>
+	
+				</button>
+			</div>
+		</div>
+	
+			
+		<div class="nav-bar-profile">
+			
+		<a class="docs-sign-in auth-status-determined not-authenticated" href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/basic-linq-query-operations#"> Sign in </a>
+	 
+		<div class="dropdown has-caret auth-status-determined authenticated">
+			<button class="dropdown-trigger button-reset" aria-controls="user-menu" aria-expanded="false" aria-label="Your Account">
+				<figure class="image is-36x36">
+					<img class="has-body-background-medium is-rounded" alt="" data-profile-property="avatarUrl">
+				</figure>
+			</button>
+			<div class="dropdown-menu box has-flex-justify-content-start has-body-background" id="user-menu" role="menu">
+				<div class="media is-user-dir">
+					<div class="media-left">
+						<figure class="image is-48x48" aria-hidden="true">
+							<img class="has-body-background-medium is-rounded" aria-labelledby="displayName" data-profile-property="avatarUrl">
+						</figure>
+					</div>
+					<div class="media-content">
+						<p class="title is-size-large">
+							<span id="displayName" class="is-inline-truncated has-max-width-200" data-profile-property="displayName"></span>
+						</p>
+						<p class="subtitle is-size-small has-margin-bottom-none">
+							<span class="is-inline-truncated has-max-width-200" data-profile-property="upn"></span>
+						</p>
+					</div>
+				</div>
+				<ul class="has-padding-top-small has-padding-bottom-medium">
+					<li class="has-padding-top-extra-small has-padding-bottom-extra-small">
+						<a href="https://docs.microsoft.com/profile" data-profile-property="profileUrl"><!---->Profile<!----></a>
+					</li>
+					<li class="has-padding-top-extra-small has-padding-bottom-extra-small">
+						<a href="https://docs.microsoft.com/profile" data-profile-property="bookmarksUrl"><!---->Bookmarks<!----></a>
+					</li>
+					<li class="has-padding-top-extra-small has-padding-bottom-extra-small">
+						<a href="https://docs.microsoft.com/profile" data-profile-property="collectionsUrl"><!---->Collections<!----></a>
+					</li>
+					<li class="has-padding-top-extra-small">
+						<a href="https://docs.microsoft.com/profile" data-profile-property="challengesUrl"><!---->Challenges<!----></a>
+					</li>
+				</ul>
+				<div class="has-border-top has-padding-top-medium">
+					<a class="docs-sign-out" href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/basic-linq-query-operations#"><!---->Sign out<!----></a>
+				</div>
+			</div>
+		</div>
+	
+		</div>
+	
+		 <!----></div> <div class="nav-bar has-border-top is-hidden-mobile"><!----> 
+		<a class="nav-bar-button is-title has-hover-underline" itemprop="url" href="https://docs.microsoft.com/dotnet/">
+			<span>
+				.NET
+				
+			</span>
+		</a>
+	 
+		
+		<nav class="nav-bar-nav" role="navigation" aria-label="Site">
+			<ul class="nav-bar-nav-list">
+				
+				<!----> <li class="dropdown nav-bar-item">
+		<button aria-expanded="false" class="dropdown-trigger nav-bar-button  has-hover-underline" aria-controls="ax-139">
+			<span><!---->Languages<!----></span>
+			<span class="nav-bar-button-chevron" aria-hidden="true">
+				<span class="docon docon-chevron-down-light expanded-indicator"></span>
+			</span>
+		</button>
+		<ul class="dropdown-menu" id="ax-139" aria-label="Languages">
+			<!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/en-us/dotnet/csharp/"><!---->C#<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/en-us/dotnet/fsharp/"><!---->F#<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/en-us/dotnet/visual-basic/"><!---->Visual Basic<!----></a>
+				</li>
+		  <!---->
+		</ul>
+	</li><!----> <li class="dropdown nav-bar-item">
+		<button aria-expanded="false" class="dropdown-trigger nav-bar-button  has-hover-underline" aria-controls="ax-140">
+			<span><!---->Workloads<!----></span>
+			<span class="nav-bar-button-chevron" aria-hidden="true">
+				<span class="docon docon-chevron-down-light expanded-indicator"></span>
+			</span>
+		</button>
+		<ul class="dropdown-menu" id="ax-140" aria-label="Workloads">
+			<!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/en-us/aspnet/core/"><!---->Web<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/en-us/xamarin/"><!---->Mobile<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/en-us/dotnet/azure/"><!---->Cloud<!----></a>
+				</li>
+		  <!----> <li class="dropdown nav-bar-item">
+		<button aria-expanded="false" class="dropdown-trigger nav-bar-button  " aria-controls="ax-141">
+			<span><!---->Desktop<!----></span>
+			<span class="nav-bar-button-chevron" aria-hidden="true">
+				<span class="docon docon-chevron-right-light "></span>
+			</span>
+		</button>
+		<ul class="dropdown-menu" id="ax-141" aria-label="Desktop">
+			<!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/en-us/dotnet/desktop-wpf/"><!---->Windows Presentation Foundation<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/en-us/dotnet/framework/winforms/"><!---->Windows Forms<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/en-us/windows/uwp/"><!---->Universal Windows apps<!----></a>
+				</li>
+		  <!---->
+		</ul>
+	</li><!----> <li class="dropdown nav-bar-item">
+		<button aria-expanded="false" class="dropdown-trigger nav-bar-button  " aria-controls="ax-142">
+			<span><!---->Machine Learning &amp; Data<!----></span>
+			<span class="nav-bar-button-chevron" aria-hidden="true">
+				<span class="docon docon-chevron-right-light "></span>
+			</span>
+		</button>
+		<ul class="dropdown-menu" id="ax-142" aria-label="Machine Learning &amp; Data">
+			<!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/en-us/dotnet/machine-learning/"><!---->ML.NET<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/en-us/dotnet/spark/"><!---->.NET for Apache Spark<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/en-us/ef/"><!---->Entity Framework<!----></a>
+				</li>
+		  <!---->
+		</ul>
+	</li><!---->
+		</ul>
+	</li><!----> <li class="dropdown nav-bar-item">
+		<button aria-expanded="false" class="dropdown-trigger nav-bar-button  has-hover-underline" aria-controls="ax-143">
+			<span><!---->APIs<!----></span>
+			<span class="nav-bar-button-chevron" aria-hidden="true">
+				<span class="docon docon-chevron-down-light expanded-indicator"></span>
+			</span>
+		</button>
+		<ul class="dropdown-menu" id="ax-143" aria-label="APIs">
+			<!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/en-us/dotnet/api/?view=netcore-3.1"><!---->.NET Core<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/en-us/dotnet/api/?view=netframework-4.8"><!---->.NET Framework<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/en-us/dotnet/api/?view=aspnetcore-3.1"><!---->ASP.NET<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/en-us/dotnet/api/?view=ml-dotnet"><!---->ML.NET<!----></a>
+				</li>
+		  <!---->
+		</ul>
+	</li><!----> <li class="dropdown nav-bar-item">
+		<button aria-expanded="false" class="dropdown-trigger nav-bar-button  has-hover-underline" aria-controls="ax-144">
+			<span><!---->Resources<!----></span>
+			<span class="nav-bar-button-chevron" aria-hidden="true">
+				<span class="docon docon-chevron-down-light expanded-indicator"></span>
+			</span>
+		</button>
+		<ul class="dropdown-menu" id="ax-144" aria-label="Resources">
+			<!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://dotnet.microsoft.com/learn/dotnet/what-is-dotnet"><!---->What is .NET?<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://dotnet.microsoft.com/learn/dotnet/architecture-guides"><!---->.NET Architecture Guides<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://dotnet.microsoft.com/learn"><!---->Learning Materials<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://dotnet.microsoft.com/download"><!---->Downloads<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://dotnet.microsoft.com/platform/community"><!---->Community<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://dotnet.microsoft.com/platform/support"><!---->Support<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://devblogs.microsoft.com/dotnet/"><!---->Blog<!----></a>
+				</li>
+		  <!---->
+		</ul>
+	</li><!----> <li class="dropdown nav-bar-item" hidden="">
+		<button aria-expanded="false" class="dropdown-trigger nav-bar-button  has-hover-underline" aria-controls="ax-145">
+			<span><!---->More<!----></span>
+			<span class="nav-bar-button-chevron" aria-hidden="true">
+				<span class="docon docon-chevron-down-light expanded-indicator"></span>
+			</span>
+		</button>
+		<ul class="dropdown-menu" id="ax-145" aria-label="More">
+			<!----> <li class="dropdown nav-bar-item" hidden="">
+		<button aria-expanded="false" class="dropdown-trigger nav-bar-button  " aria-controls="ax-146">
+			<span><!---->Languages<!----></span>
+			<span class="nav-bar-button-chevron" aria-hidden="true">
+				<span class="docon docon-chevron-right-light "></span>
+			</span>
+		</button>
+		<ul class="dropdown-menu" id="ax-146" aria-label="Languages">
+			<!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/en-us/dotnet/csharp/"><!---->C#<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/en-us/dotnet/fsharp/"><!---->F#<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/en-us/dotnet/visual-basic/"><!---->Visual Basic<!----></a>
+				</li>
+		  <!---->
+		</ul>
+	</li><!----> <li class="dropdown nav-bar-item" hidden="">
+		<button aria-expanded="false" class="dropdown-trigger nav-bar-button  " aria-controls="ax-147">
+			<span><!---->Workloads<!----></span>
+			<span class="nav-bar-button-chevron" aria-hidden="true">
+				<span class="docon docon-chevron-right-light "></span>
+			</span>
+		</button>
+		<ul class="dropdown-menu" id="ax-147" aria-label="Workloads">
+			<!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/en-us/aspnet/core/"><!---->Web<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/en-us/xamarin/"><!---->Mobile<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/en-us/dotnet/azure/"><!---->Cloud<!----></a>
+				</li>
+		  <!----> <li class="dropdown nav-bar-item">
+		<button aria-expanded="false" class="dropdown-trigger nav-bar-button  " aria-controls="ax-148">
+			<span><!---->Desktop<!----></span>
+			<span class="nav-bar-button-chevron" aria-hidden="true">
+				<span class="docon docon-chevron-right-light "></span>
+			</span>
+		</button>
+		<ul class="dropdown-menu" id="ax-148" aria-label="Desktop">
+			<!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/en-us/dotnet/desktop-wpf/"><!---->Windows Presentation Foundation<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/en-us/dotnet/framework/winforms/"><!---->Windows Forms<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/en-us/windows/uwp/"><!---->Universal Windows apps<!----></a>
+				</li>
+		  <!---->
+		</ul>
+	</li><!----> <li class="dropdown nav-bar-item">
+		<button aria-expanded="false" class="dropdown-trigger nav-bar-button  " aria-controls="ax-149">
+			<span><!---->Machine Learning &amp; Data<!----></span>
+			<span class="nav-bar-button-chevron" aria-hidden="true">
+				<span class="docon docon-chevron-right-light "></span>
+			</span>
+		</button>
+		<ul class="dropdown-menu" id="ax-149" aria-label="Machine Learning &amp; Data">
+			<!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/en-us/dotnet/machine-learning/"><!---->ML.NET<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/en-us/dotnet/spark/"><!---->.NET for Apache Spark<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/en-us/ef/"><!---->Entity Framework<!----></a>
+				</li>
+		  <!---->
+		</ul>
+	</li><!---->
+		</ul>
+	</li><!----> <li class="dropdown nav-bar-item" hidden="">
+		<button aria-expanded="false" class="dropdown-trigger nav-bar-button  " aria-controls="ax-150">
+			<span><!---->APIs<!----></span>
+			<span class="nav-bar-button-chevron" aria-hidden="true">
+				<span class="docon docon-chevron-right-light "></span>
+			</span>
+		</button>
+		<ul class="dropdown-menu" id="ax-150" aria-label="APIs">
+			<!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/en-us/dotnet/api/?view=netcore-3.1"><!---->.NET Core<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/en-us/dotnet/api/?view=netframework-4.8"><!---->.NET Framework<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/en-us/dotnet/api/?view=aspnetcore-3.1"><!---->ASP.NET<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/en-us/dotnet/api/?view=ml-dotnet"><!---->ML.NET<!----></a>
+				</li>
+		  <!---->
+		</ul>
+	</li><!----> <li class="dropdown nav-bar-item" hidden="">
+		<button aria-expanded="false" class="dropdown-trigger nav-bar-button  " aria-controls="ax-151">
+			<span><!---->Resources<!----></span>
+			<span class="nav-bar-button-chevron" aria-hidden="true">
+				<span class="docon docon-chevron-right-light "></span>
+			</span>
+		</button>
+		<ul class="dropdown-menu" id="ax-151" aria-label="Resources">
+			<!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://dotnet.microsoft.com/learn/dotnet/what-is-dotnet"><!---->What is .NET?<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://dotnet.microsoft.com/learn/dotnet/architecture-guides"><!---->.NET Architecture Guides<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://dotnet.microsoft.com/learn"><!---->Learning Materials<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://dotnet.microsoft.com/download"><!---->Downloads<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://dotnet.microsoft.com/platform/community"><!---->Community<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://dotnet.microsoft.com/platform/support"><!---->Support<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://devblogs.microsoft.com/dotnet/"><!---->Blog<!----></a>
+				</li>
+		  <!---->
+		</ul>
+	</li><!---->
+		</ul>
+	</li><!---->
+			</ul>
+		</nav>
+	
+		<span class="nav-bar-spacer"></span>
+		
+		<ol class="nav-bar-list">
+			 
+		<li class="nav-bar-item ">
+			<a class="button is-small is-primary " href="https://dotnet.microsoft.com/download">
+				Download .NET
+			</a>
+		</li>
+	
+		</ol>
+	 
+	 <!----></div> <!----></header>	</div>
+
+				<div class="content-header uhf-container has-padding has-default-focus has-border-bottom-none" data-bi-name="content-header">
+				<nav class="has-padding-none has-padding-left-medium-tablet has-padding-right-medium-tablet has-padding-left-none-uhf-tablet has-padding-left-none-uhf-tablet has-padding-none-desktop has-flex-grow" data-bi-name="breadcrumb" itemscope="" itemtype="http://schema.org/BreadcrumbList" role="navigation" aria-label="Breadcrumb">
+					<ul id="page-breadcrumbs" class="breadcrumbs"><!----><!---->
+				<li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+					
+								<a itemprop="item" href="https://docs.microsoft.com/en-us/">
+									<span itemprop="name"><!---->Docs<!----></span>
+								</a>
+						  
+					<meta itemprop="position" content="1">
+				</li>
+			<!---->
+				<li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+					
+								<a itemprop="item" href="https://docs.microsoft.com/en-us/dotnet/">
+									<span itemprop="name"><!---->.NET<!----></span>
+								</a>
+						  
+					<meta itemprop="position" content="2">
+				</li>
+			<!---->
+				<li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+					
+								<a itemprop="item" href="https://docs.microsoft.com/en-us/dotnet/csharp/">
+									<span itemprop="name"><!---->C# guide<!----></span>
+								</a>
+						  
+					<meta itemprop="position" content="3">
+				</li>
+			<!---->
+				<li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+					
+								<a itemprop="item" href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/">
+									<span itemprop="name"><!---->Programming guide<!----></span>
+								</a>
+						  
+					<meta itemprop="position" content="4">
+				</li>
+			<!---->
+				<li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+					
+								<a itemprop="item" href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/">
+									<span itemprop="name"><!---->Programming concepts<!----></span>
+								</a>
+						  
+					<meta itemprop="position" content="5">
+				</li>
+			<!---->
+				<li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+					
+								<a itemprop="item" href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/">
+									<span itemprop="name"><!---->LINQ<!----></span>
+								</a>
+						  
+					<meta itemprop="position" content="6">
+				</li>
+			<!----><!----></ul>
+				</nav>
+			<div class="content-header-controls">
+				<button type="button" class="contents-button button" data-bi-name="contents-expand" aria-haspopup="true">
+					<span class="icon"><span class="docon docon-menu" aria-hidden="true"></span></span>
+					<span class="contents-expand-title">Contents</span>
+				</button>
+				<button type="button" class="ap-collapse-behavior ap-expanded button" data-bi-name="ap-collapse" aria-controls="action-panel">
+					<span class="icon"><span class="docon docon-exit-mode" aria-hidden="true"></span></span>
+					<span>Exit focus mode</span>
+				</button>
+			</div>
+			<div class="has-padding-none-tablet has-padding-medium is-size-small is-flex-touch has-flex-justify-content-space-between-touch has-flex-grow">
+				<ul class="is-hidden-mobile action-list has-flex-justify-content-start has-flex-justify-content-end-tablet is-flex is-flex-row has-flex-wrap has-flex-grow is-unstyled">
+					<li>
+						<button type="button" class="bookmark button is-text has-inner-focus is-small is-icon-only-touch" data-list-type="bookmarks" data-bi-name="bookmark" title="Add bookmark for Basic LINQ Query Operations (C#) | Microsoft Docs" aria-pressed="false">
+							<span class="icon" aria-hidden="true">
+								<span class="docon docon-single-bookmark"></span>
+							</span>
+							<span class="bookmark-status is-visually-hidden-touch is-hidden-portrait">Bookmark</span>
+						</button>
+					</li>
+						<li id="feedback-section-link">
+							<a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/basic-linq-query-operations#feedback" class="button is-text has-inner-focus is-small is-icon-only-touch" data-bi-name="comments" title="Send feedback about this page">
+								<span class="icon" aria-hidden="true">
+									<span class="docon docon-comment-lines"></span>
+								</span>
+								<span class="is-visually-hidden-touch is-hidden-portrait">Feedback</span>
+							</a>
+						</li>
+							<li id="contenteditbtn">
+								<a href="https://github.com/dotnet/docs/blob/master/docs/csharp/programming-guide/concepts/linq/basic-linq-query-operations.md" class="button is-text has-inner-focus is-icon-only-touch is-small" title="Edit This Document" data-bi-name="edit" data-original_content_git_url="https://github.com/dotnet/docs/blob/live/docs/csharp/programming-guide/concepts/linq/basic-linq-query-operations.md" data-original_content_git_url_template="{repo}/blob/{branch}/docs/csharp/programming-guide/concepts/linq/basic-linq-query-operations.md" data-pr_repo="" data-pr_branch="">
+								<span class="icon" aria-hidden="true">
+									<span class="docon docon-edit-outline"></span>
+								</span>
+								<span class="is-visually-hidden-touch is-hidden-portrait">Edit</span>
+							</a>
+						</li>
+					<li>
+<div class="sharing dropdown has-caret">
+	<button class="dropdown-trigger button is-text is-fullwidth has-flex-justify-content-start has-inner-focus is-small is-icon-only-touch" aria-controls="sharing-menu" aria-expanded="false" title="Share This Document" data-bi-name="share">
+		<span class="icon" aria-hidden="true">
+			<span class="docon docon-sharing"></span>
+		</span>
+		<span class="is-visually-hidden-touch is-hidden-portrait">Share</span>
+	</button>
+	<div class="dropdown-menu has-padding-small" id="sharing-menu">
+		<ul data-bi-name="share-links">
+			<li>
+				<a class="button is-text is-fullwidth has-flex-justify-content-start has-inner-focus is-small share-twitter" data-bi-name="twitter" href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fdotnet%2Fcsharp%2Fprogramming-guide%2Fconcepts%2Flinq%2Fbasic-linq-query-operations%3FWT.mc_id%3Dtwitter&amp;text=Basic%20LINQ%20Query%20Operations%20(C%23)%20%7C%20Microsoft%20Docs&amp;tw_p=tweetbutton&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fdotnet%2Fcsharp%2Fprogramming-guide%2Fconcepts%2Flinq%2Fbasic-linq-query-operations%3FWT.mc_id%3Dtwitter">
+					<span class="icon">
+						<span class="docon docon-brand-twitter has-text-primary" aria-hidden="true"></span>
+					</span>
+					<span>Twitter</span>
+				</a>
+			</li>
+			<li>
+				<a class="button is-text is-fullwidth has-flex-justify-content-start has-inner-focus is-small share-linkedin" data-bi-name="linkedin" href="https://www.linkedin.com/cws/share?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fdotnet%2Fcsharp%2Fprogramming-guide%2Fconcepts%2Flinq%2Fbasic-linq-query-operations%3FWT.mc_id%3Dlinkedin">
+					<span class="icon">
+						<span class="docon docon-brand-linkedin has-text-primary" aria-hidden="true"></span>
+					</span>
+					<span>LinkedIn</span>
+				</a>
+			</li>
+			<li>
+				<a class="button is-text is-fullwidth has-flex-justify-content-start has-inner-focus is-small share-facebook" data-bi-name="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fdotnet%2Fcsharp%2Fprogramming-guide%2Fconcepts%2Flinq%2Fbasic-linq-query-operations%3FWT.mc_id%3Dfacebook">
+					<span class="icon">
+						<span class="docon docon-brand-facebook has-text-primary" aria-hidden="true"></span>
+					</span>
+					<span>Facebook</span>
+				</a>
+			</li>
+			<li>
+				<a class="button is-text is-fullwidth has-flex-justify-content-start has-inner-focus is-small share-email" data-bi-name="email" href="mailto:?subject=%5BShared%20Article%5D%20Basic%20LINQ%20Query%20Operations%20(C%23)%20%7C%20Microsoft%20Docs&amp;body=Basic%20LINQ%20Query%20Operations%20(C%23)%20%7C%20Microsoft%20Docs%0A%0Ahttps%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fdotnet%2Fcsharp%2Fprogramming-guide%2Fconcepts%2Flinq%2Fbasic-linq-query-operations%3FWT.mc_id%3Demail">
+					<span class="icon">
+						<span class="docon docon-mail-message-fill has-text-primary" aria-hidden="true"></span>
+					</span>
+					<span>Email</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>					</li>
+				</ul>
+				<button type="button" class="has-border contents-button button is-small is-text is-hidden-tablet has-inner-focus" aria-label="Contents" data-bi-name="contents-expand">
+					<span class="icon">
+						<span class="docon docon-editor-list-bullet" aria-hidden="true"></span>
+					</span>
+					<span class="contents-expand-title">Table of contents</span>
+				</button>
+				<div class="is-invisible"></div>
+				<div class="is-hidden-tablet level-item is-flexible level-right">
+					<button type="button" class="page-actions-button button is-small is-text is-hidden-tablet has-inner-focus has-border is-full-height  has-margin-left-small" aria-label="Page Actions" data-bi-name="pageactions">
+						<span class="icon">
+							<span class="docon docon-more-vertical" aria-hidden="true"></span>
+						</span>
+					</button>
+				</div>
+			</div>
+		</div>
+
+
+
+	<div id="disclaimer-holder" class="has-overflow-hidden has-default-focus">
+		<!-- liquid-tag banners sectional -->
+	</div>
+	</div>
+
+	<div class="mainContainer  uhf-container has-top-padding  has-default-focus" data-bi-name="body">
+
+		<div class="columns has-large-gaps is-gapless-mobile ">
+
+			<div id="left-container" class="left-container is-hidden-mobile column is-one-third-tablet is-one-quarter-desktop">
+				<nav id="affixed-left-container" class="is-fixed is-flex is-flex-column" role="navigation" aria-label="Primary" style="width: 364px; top: 24px; bottom: 24px;" data-bi-name="left toc"><form action="javascript:" role="search" aria-label="Search" class="has-margin-bottom-small"><label class="visually-hidden" for="ax-114">Search</label><div class="autocomplete is-block" data-bi-name="autocomplete"><!----> <div class="control has-icons-left">
+				<input role="combobox" maxlength="100" aria-autocomplete="list" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" id="ax-114" class="autocomplete-input input control has-icons-left is-full-width is-small" type="text" aria-expanded="false" aria-owns="ax-115-listbox" aria-activedescendant="" placeholder="Filter by title">
+
+				<span aria-hidden="true" class="icon is-small is-left">
+					<span class="has-text-primary docon docon-filter-settings"></span>
+				</span>
+
+				<span aria-hidden="true" class="autocomplete-loader loader has-text-primary " hidden=""></span>
+			</div>
+
+			<ul class="autocomplete-suggestions is-vertically-scrollable" role="listbox" id="ax-115-listbox" aria-label="ax-114-suggestions" hidden="">
+				
+			</ul><!----></div></form><ul class="tree is-vertically-scrollable has-flex-grow has-flex-shrink" role="tree" aria-label="Table of contents" data-bi-name="tree" data-is-collapsible="true"><li role="none"><a aria-setsize="10" aria-level="1" aria-posinset="1" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/csharp/">C# documentation</a></li><li class="tree-item" aria-setsize="10" aria-level="1" aria-posinset="2" role="treeitem" tabindex="-1" id="title-2-1" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Get started</span></li><li class="tree-item" aria-setsize="10" aria-level="1" aria-posinset="3" role="treeitem" tabindex="-1" id="title-3-1" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Tutorials</span></li><li class="tree-item" aria-setsize="10" aria-level="1" aria-posinset="4" role="treeitem" tabindex="-1" id="title-4-1" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>What's new in C#</span></li><li class="tree-item" aria-setsize="10" aria-level="1" aria-posinset="5" role="treeitem" tabindex="-1" id="title-5-1" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>C# concepts</span></li><li class="tree-item" aria-setsize="10" aria-level="1" aria-posinset="6" role="treeitem" tabindex="-1" id="title-6-1" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>How-to C# articles</span></li><li class="tree-item" aria-setsize="10" aria-level="1" aria-posinset="7" role="treeitem" tabindex="-1" id="title-7-1" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>The .NET Compiler Platform SDK (Roslyn APIs)</span></li><li class="tree-item is-expanded" aria-setsize="10" aria-level="1" aria-posinset="8" role="treeitem" tabindex="-1" id="title-8-1" aria-expanded="true"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>C# programming guide</span><ul class="tree-group" role="group"><li role="none"><a aria-setsize="20" aria-level="2" aria-posinset="1" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/">Overview</a></li><li class="tree-item" aria-setsize="20" aria-level="2" aria-posinset="2" role="treeitem" tabindex="-1" id="title-8-1_2-2" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Inside a C# program</span></li><li class="tree-item" aria-setsize="20" aria-level="2" aria-posinset="3" role="treeitem" tabindex="-1" id="title-8-1_3-2" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Main() and command-line arguments</span></li><li class="tree-item is-expanded" aria-setsize="20" aria-level="2" aria-posinset="4" role="treeitem" tabindex="-1" id="title-8-1_4-2" aria-expanded="true"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Programming concepts</span><ul class="tree-group" role="group"><li role="none"><a aria-setsize="10" aria-level="3" aria-posinset="1" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/">Overview</a></li><li class="tree-item" aria-setsize="10" aria-level="3" aria-posinset="2" role="treeitem" tabindex="-1" id="title-8-1_4-2_2-3" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Asynchronous programming</span></li><li class="tree-item" aria-setsize="10" aria-level="3" aria-posinset="3" role="treeitem" tabindex="-1" id="title-8-1_4-2_3-3" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Attributes</span></li><li role="none"><a aria-setsize="10" aria-level="3" aria-posinset="4" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/collections">Collections</a></li><li class="tree-item" aria-setsize="10" aria-level="3" aria-posinset="5" role="treeitem" tabindex="-1" id="title-8-1_4-2_5-3" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Covariance and contravariance</span></li><li class="tree-item" aria-setsize="10" aria-level="3" aria-posinset="6" role="treeitem" tabindex="-1" id="title-8-1_4-2_6-3" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Expression trees</span></li><li role="none"><a aria-setsize="10" aria-level="3" aria-posinset="7" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/iterators">Iterators</a></li><li class="tree-item is-expanded" aria-setsize="10" aria-level="3" aria-posinset="8" role="treeitem" tabindex="-1" id="title-8-1_4-2_8-3" aria-expanded="true"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Language-Integrated Query (LINQ)</span><ul class="tree-group" role="group"><li role="none"><a aria-setsize="7" aria-level="4" aria-posinset="1" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/">Overview</a></li><li class="tree-item is-expanded" aria-setsize="7" aria-level="4" aria-posinset="2" role="treeitem" tabindex="-1" id="title-8-1_4-2_8-3_2-4" aria-expanded="true"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Getting Started with LINQ in C#</span><ul class="tree-group" role="group"><li role="none"><a aria-setsize="8" aria-level="5" aria-posinset="1" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries">Introduction to LINQ Queries</a></li><li role="none"><a aria-setsize="8" aria-level="5" aria-posinset="2" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/linq-and-generic-types">LINQ and Generic Types</a></li><li role="none"><a aria-setsize="8" aria-level="5" aria-posinset="3" role="treeitem" tabindex="0" class="tree-item is-leaf is-selected" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/basic-linq-query-operations" aria-current="page">Basic LINQ Query Operations</a></li><li role="none"><a aria-setsize="8" aria-level="5" aria-posinset="4" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/data-transformations-with-linq">Data Transformations with LINQ</a></li><li role="none"><a aria-setsize="8" aria-level="5" aria-posinset="5" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/type-relationships-in-linq-query-operations">Type Relationships in LINQ Query Operations</a></li><li role="none"><a aria-setsize="8" aria-level="5" aria-posinset="6" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/query-syntax-and-method-syntax-in-linq">Query Syntax and Method Syntax in LINQ</a></li><li role="none"><a aria-setsize="8" aria-level="5" aria-posinset="7" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/features-that-support-linq">C# Features That Support LINQ</a></li><li role="none"><a aria-setsize="8" aria-level="5" aria-posinset="8" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/walkthrough-writing-queries-linq">Walkthrough: Writing Queries in C# (LINQ)</a></li></ul></li><li class="tree-item" aria-setsize="7" aria-level="4" aria-posinset="3" role="treeitem" tabindex="-1" id="title-8-1_4-2_8-3_3-4" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Standard Query Operators Overview</span></li><li class="tree-item" aria-setsize="7" aria-level="4" aria-posinset="4" role="treeitem" tabindex="-1" id="title-8-1_4-2_8-3_4-4" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>LINQ to Objects</span></li><li role="none"><a aria-setsize="7" aria-level="4" aria-posinset="5" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/linq-to-adonet-portal-page">LINQ to ADO.<wbr>NET (Portal Page)</a></li><li role="none"><a aria-setsize="7" aria-level="4" aria-posinset="6" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/enabling-a-data-source-for-linq-querying1">Enabling a Data Source for LINQ Querying</a></li><li role="none"><a aria-setsize="7" aria-level="4" aria-posinset="7" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/visual-studio-ide-and-tools-support-for-linq">Visual Studio IDE and Tools Support for LINQ</a></li></ul></li><li role="none"><a aria-setsize="10" aria-level="3" aria-posinset="9" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/reflection">Reflection</a></li><li class="tree-item" aria-setsize="10" aria-level="3" aria-posinset="10" role="treeitem" tabindex="-1" id="title-8-1_4-2_10-3" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Serialization (C#)</span></li></ul></li><li class="tree-item" aria-setsize="20" aria-level="2" aria-posinset="5" role="treeitem" tabindex="-1" id="title-8-1_5-2" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Statements, expressions, and operators</span></li><li class="tree-item" aria-setsize="20" aria-level="2" aria-posinset="6" role="treeitem" tabindex="-1" id="title-8-1_6-2" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Types</span></li><li class="tree-item" aria-setsize="20" aria-level="2" aria-posinset="7" role="treeitem" tabindex="-1" id="title-8-1_7-2" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Classes and Structs</span></li><li class="tree-item" aria-setsize="20" aria-level="2" aria-posinset="8" role="treeitem" tabindex="-1" id="title-8-1_8-2" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Interfaces</span></li><li class="tree-item" aria-setsize="20" aria-level="2" aria-posinset="9" role="treeitem" tabindex="-1" id="title-8-1_9-2" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Delegates</span></li><li class="tree-item" aria-setsize="20" aria-level="2" aria-posinset="10" role="treeitem" tabindex="-1" id="title-8-1_10-2" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Arrays</span></li><li class="tree-item" aria-setsize="20" aria-level="2" aria-posinset="11" role="treeitem" tabindex="-1" id="title-8-1_11-2" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Strings</span></li><li class="tree-item" aria-setsize="20" aria-level="2" aria-posinset="12" role="treeitem" tabindex="-1" id="title-8-1_12-2" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Indexers</span></li><li class="tree-item" aria-setsize="20" aria-level="2" aria-posinset="13" role="treeitem" tabindex="-1" id="title-8-1_13-2" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Events</span></li><li class="tree-item" aria-setsize="20" aria-level="2" aria-posinset="14" role="treeitem" tabindex="-1" id="title-8-1_14-2" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Generics</span></li><li class="tree-item" aria-setsize="20" aria-level="2" aria-posinset="15" role="treeitem" tabindex="-1" id="title-8-1_15-2" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Namespaces</span></li><li class="tree-item" aria-setsize="20" aria-level="2" aria-posinset="16" role="treeitem" tabindex="-1" id="title-8-1_16-2" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Unsafe Code and Pointers</span></li><li class="tree-item" aria-setsize="20" aria-level="2" aria-posinset="17" role="treeitem" tabindex="-1" id="title-8-1_17-2" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>XML documentation comments</span></li><li class="tree-item" aria-setsize="20" aria-level="2" aria-posinset="18" role="treeitem" tabindex="-1" id="title-8-1_18-2" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Exceptions and Exception Handling</span></li><li class="tree-item" aria-setsize="20" aria-level="2" aria-posinset="19" role="treeitem" tabindex="-1" id="title-8-1_19-2" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>File System and the Registry</span></li><li class="tree-item" aria-setsize="20" aria-level="2" aria-posinset="20" role="treeitem" tabindex="-1" id="title-8-1_20-2" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Interoperability</span></li></ul></li><li class="tree-item" aria-setsize="10" aria-level="1" aria-posinset="9" role="treeitem" tabindex="-1" id="title-9-1" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Language reference</span></li><li role="none"><a aria-setsize="10" aria-level="1" aria-posinset="10" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/csharp/walkthroughs">Walkthroughs</a></li></ul><a class="button is-small is-text has-flex-justify-content-start has-inner-focus has-margin-top-small has-border-top has-border-bottom has-flex-shrink-none" href="https://docs.microsoft.com/en-us/dotnet/opbuildpdf/csharp/toc.pdf?branch=live" data-bi-name="downloadPdf" rel="nofollow"><!----> <span class="icon is-size-extra-small has-text-subtle">
+				<span aria-hidden="true" class="docon docon-dictionary-download"></span>
+			</span>
+			<span><!---->Download PDF<!----></span><!----></a></nav>
+			</div>
+
+			<section class="primary-holder column is-two-thirds-tablet is-three-quarters-desktop">
+				<div class="columns is-gapless-mobile has-large-gaps ">
+
+
+				<div id="main-column" class="column  is-full is-four-fifths-desktop ">
+
+					<main id="main" role="main" class="content " data-bi-name="content" lang="en-us" dir="ltr">
+
+
+
+						<h1 id="basic-linq-query-operations-c">Basic LINQ Query Operations (C#)</h1>
+
+						<ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
+							<li>
+								<time class="" data-article-date="" aria-label="Article review date" datetime="2015-07-20T00:00:00.000Z" data-article-date-source="ms.date">07/20/2015</time>
+							</li>
+									<li class="readingTime">5 minutes to read</li>
+								<li class="contributors-holder">
+										<a href="https://github.com/dotnet/docs/blob/master/docs/csharp/programming-guide/concepts/linq/basic-linq-query-operations.md" title="14 Contributors" aria-label="14 Contributors">
+									<ul class="contributors" data-bi-name="contributors" aria-hidden="true">
+												<li><img src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/BillWagner.png" data-src="https://github.com/BillWagner.png?size=32" role="presentation"></li>
+												<li><img src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/nschonni.png" data-src="https://github.com/nschonni.png?size=32" role="presentation"></li>
+												<li><img src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/jdmartinez36.png" data-src="https://github.com/jdmartinez36.png?size=32" role="presentation"></li>
+												<li><img src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/NextTurn.png" data-src="https://github.com/NextTurn.png?size=32" role="presentation"></li>
+												<li><img src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/Youssef1313.png" data-src="https://github.com/Youssef1313.png?size=32" role="presentation"></li>
+										<li><span class="is-size-extra-small has-text-subtle">+9</span></li>
+									</ul>
+										</a>
+								</li>
+						</ul>
+
+						<nav id="center-doc-outline" class="doc-outline is-hidden-desktop" data-bi-name="intopic toc" role="navigation" aria-label="Article Outline">
+							<h3>In this article</h3>
+						<ol><li><a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/basic-linq-query-operations#obtaining-a-data-source">Obtaining a Data Source</a></li><li><a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/basic-linq-query-operations#filtering">Filtering</a></li><li><a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/basic-linq-query-operations#ordering">Ordering</a></li><li><a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/basic-linq-query-operations#grouping">Grouping</a></li><li><a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/basic-linq-query-operations#joining">Joining</a></li><li><a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/basic-linq-query-operations#selecting-projections">Selecting (Projections)</a></li><li><a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/basic-linq-query-operations#see-also">See also</a></li></ol></nav>
+
+						<!-- <content> -->
+							<p>This topic gives a brief introduction to LINQ query expressions and some of the typical kinds of operations that you perform in a query. More detailed information is in the following topics:</p>
+<p><a href="https://docs.microsoft.com/en-us/dotnet/csharp/linq/" data-linktype="relative-path">LINQ Query Expressions</a></p>
+<p><a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/standard-query-operators-overview" data-linktype="relative-path">Standard Query Operators Overview (C#)</a></p>
+<p><a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/walkthrough-writing-queries-linq" data-linktype="relative-path">Walkthrough: Writing Queries in C#</a></p>
+<div class="alert is-info">
+<p class="alert-title"><span class="docon docon-status-error-outline" aria-hidden="true"></span> Note</p>
+<p>If you already are familiar with a query language such as SQL or XQuery, you can skip most of this topic. Read about the "<code>from</code> clause" in the next section to learn about the order of clauses in LINQ query expressions.</p>
+</div>
+<h2 id="obtaining-a-data-source" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/basic-linq-query-operations#obtaining-a-data-source" aria-labelledby="obtaining-a-data-source"></a>Obtaining a Data Source</h2>
+<p>In a LINQ query, the first step is to specify the data source. In C# as in most programming languages a variable must be declared before it can be used. In a LINQ query, the <code>from</code> clause comes first in order to introduce the data source (<code>customers</code>) and the <em>range variable</em> (<code>cust</code>).</p>
+<div class="codeHeader" id="code-try-0" data-bi-name="code-header"><span class="language">C#</span><button type="button" class="action is-relative" data-bi-name="copy" aria-label="Copy code">
+				<span class="icon">
+					<span class="docon docon-edit-copy" role="presentation"></span>
+				</span>
+				<span>Copy</span>
+				<div class="successful-copy-alert is-absolute has-right-zero has-top-zero has-left-zero has-bottom-zero is-flex has-flex-align-items-center has-flex-justify-content-center has-text-success-invert has-background-success is-transparent" aria-hidden="true">
+					<span class="icon is-size-large">
+						<span class="docon docon-check-mark" role="presentation"></span>
+					</span>
+				</div>
+			</button></div><pre tabindex="0" class="has-inner-focus"><code class="lang-csharp" name="csLINQGettingStarted#23" data-author-content="//queryAllCustomers is an IEnumerable&lt;Customer&gt;
+var queryAllCustomers = from cust in customers
+                        select cust;
+"><span><span class="hljs-comment">//queryAllCustomers is an IEnumerable&lt;Customer&gt;</span>
+<span class="hljs-keyword">var</span> queryAllCustomers = <span class="hljs-keyword">from</span> cust <span class="hljs-keyword">in</span> customers
+                        <span class="hljs-keyword">select</span> cust;
+</span></code></pre>
+<p>The range variable is like the iteration variable in a <code>foreach</code> loop except that no actual iteration occurs in a query expression. When the query is executed, the range variable will serve as a reference to each successive element in <code>customers</code>. Because the compiler can infer the type of <code>cust</code>, you do not have to specify it explicitly. Additional range variables can be introduced by a <code>let</code> clause. For more information, see <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/let-clause" data-linktype="relative-path">let clause</a>.</p>
+<div class="alert is-info">
+<p class="alert-title"><span class="docon docon-status-error-outline" aria-hidden="true"></span> Note</p>
+<p>For non-generic data sources such as <a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.arraylist" data-linktype="absolute-path">ArrayList</a>, the range variable must be explicitly typed. For more information, see <a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/how-to-query-an-arraylist-with-linq" data-linktype="relative-path">How to query an ArrayList with LINQ (C#)</a> and <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/from-clause" data-linktype="relative-path">from clause</a>.</p>
+</div>
+<h2 id="filtering" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/basic-linq-query-operations#filtering" aria-labelledby="filtering"></a>Filtering</h2>
+<p>Probably the most common query operation is to apply a filter in the form of a Boolean expression. The filter causes the query to return only those elements for which the expression is true. The result is produced by using the <code>where</code> clause. The filter in effect specifies which elements to exclude from the source sequence. In the following example, only those <code>customers</code> who have an address in London are returned.</p>
+<div class="codeHeader" id="code-try-1" data-bi-name="code-header"><span class="language">C#</span><button type="button" class="action is-relative" data-bi-name="copy" aria-label="Copy code">
+				<span class="icon">
+					<span class="docon docon-edit-copy" role="presentation"></span>
+				</span>
+				<span>Copy</span>
+				<div class="successful-copy-alert is-absolute has-right-zero has-top-zero has-left-zero has-bottom-zero is-flex has-flex-align-items-center has-flex-justify-content-center has-text-success-invert has-background-success is-transparent" aria-hidden="true">
+					<span class="icon is-size-large">
+						<span class="docon docon-check-mark" role="presentation"></span>
+					</span>
+				</div>
+			</button></div><pre tabindex="0" class="has-inner-focus"><code class="lang-csharp" name="csLINQGettingStarted#24" data-author-content="var queryLondonCustomers = from cust in customers
+                           where cust.City == &quot;London&quot;
+                           select cust;
+"><span><span class="hljs-keyword">var</span> queryLondonCustomers = <span class="hljs-keyword">from</span> cust <span class="hljs-keyword">in</span> customers
+                           <span class="hljs-keyword">where</span> cust.City == <span class="hljs-string">"London"</span>
+                           <span class="hljs-keyword">select</span> cust;
+</span></code></pre>
+<p>You can use the familiar C# logical <code>AND</code> and <code>OR</code> operators to apply as many filter expressions as necessary in the <code>where</code> clause. For example, to return only customers from "London" <code>AND</code> whose name is "Devon" you would write the following code:</p>
+<div class="codeHeader" id="code-try-2" data-bi-name="code-header"><span class="language">C#</span><button type="button" class="action is-relative" data-bi-name="copy" aria-label="Copy code">
+				<span class="icon">
+					<span class="docon docon-edit-copy" role="presentation"></span>
+				</span>
+				<span>Copy</span>
+				<div class="successful-copy-alert is-absolute has-right-zero has-top-zero has-left-zero has-bottom-zero is-flex has-flex-align-items-center has-flex-justify-content-center has-text-success-invert has-background-success is-transparent" aria-hidden="true">
+					<span class="icon is-size-large">
+						<span class="docon docon-check-mark" role="presentation"></span>
+					</span>
+				</div>
+			</button></div><pre tabindex="0" class="has-inner-focus"><code class="lang-csharp" name="csLINQGettingStarted#25" data-author-content="where cust.City == &quot;London&quot; &amp;&amp; cust.Name == &quot;Devon&quot;
+"><span><span class="hljs-keyword">where</span> cust.City == <span class="hljs-string">"London"</span> &amp;&amp; cust.Name == <span class="hljs-string">"Devon"</span>
+</span></code></pre>
+<p>To return customers from London or Paris, you would write the following code:</p>
+<div class="codeHeader" id="code-try-3" data-bi-name="code-header"><span class="language">C#</span><button type="button" class="action is-relative" data-bi-name="copy" aria-label="Copy code">
+				<span class="icon">
+					<span class="docon docon-edit-copy" role="presentation"></span>
+				</span>
+				<span>Copy</span>
+				<div class="successful-copy-alert is-absolute has-right-zero has-top-zero has-left-zero has-bottom-zero is-flex has-flex-align-items-center has-flex-justify-content-center has-text-success-invert has-background-success is-transparent" aria-hidden="true">
+					<span class="icon is-size-large">
+						<span class="docon docon-check-mark" role="presentation"></span>
+					</span>
+				</div>
+			</button></div><pre tabindex="0" class="has-inner-focus"><code class="lang-csharp" name="csLINQGettingStarted#26" data-author-content="where cust.City == &quot;London&quot; || cust.City == &quot;Paris&quot;
+"><span><span class="hljs-keyword">where</span> cust.City == <span class="hljs-string">"London"</span> || cust.City == <span class="hljs-string">"Paris"</span>
+</span></code></pre>
+<p>For more information, see <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/where-clause" data-linktype="relative-path">where clause</a>.</p>
+<h2 id="ordering" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/basic-linq-query-operations#ordering" aria-labelledby="ordering"></a>Ordering</h2>
+<p>Often it is convenient to sort the returned data. The <code>orderby</code> clause will cause the elements in the returned sequence to be sorted according to the default comparer for the type being sorted. For example, the following query can be extended to sort the results based on the <code>Name</code> property. Because <code>Name</code> is a string, the default comparer performs an alphabetical sort from A to Z.</p>
+<div class="codeHeader" id="code-try-4" data-bi-name="code-header"><span class="language">C#</span><button type="button" class="action is-relative" data-bi-name="copy" aria-label="Copy code">
+				<span class="icon">
+					<span class="docon docon-edit-copy" role="presentation"></span>
+				</span>
+				<span>Copy</span>
+				<div class="successful-copy-alert is-absolute has-right-zero has-top-zero has-left-zero has-bottom-zero is-flex has-flex-align-items-center has-flex-justify-content-center has-text-success-invert has-background-success is-transparent" aria-hidden="true">
+					<span class="icon is-size-large">
+						<span class="docon docon-check-mark" role="presentation"></span>
+					</span>
+				</div>
+			</button></div><pre tabindex="0" class="has-inner-focus"><code class="lang-csharp" name="csLINQGettingStarted#27" data-author-content="var queryLondonCustomers3 =
+    from cust in customers
+    where cust.City == &quot;London&quot;
+    orderby cust.Name ascending
+    select cust;
+"><span><span class="hljs-keyword">var</span> queryLondonCustomers3 =
+    <span class="hljs-keyword">from</span> cust <span class="hljs-keyword">in</span> customers
+    <span class="hljs-keyword">where</span> cust.City == <span class="hljs-string">"London"</span>
+    <span class="hljs-keyword">orderby</span> cust.Name <span class="hljs-keyword">ascending</span>
+    <span class="hljs-keyword">select</span> cust;
+</span></code></pre>
+<p>To order the results in reverse order, from Z to A, use the <code>orderby…descending</code> clause.</p>
+<p>For more information, see <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/orderby-clause" data-linktype="relative-path">orderby clause</a>.</p>
+<h2 id="grouping" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/basic-linq-query-operations#grouping" aria-labelledby="grouping"></a>Grouping</h2>
+<p>The <code>group</code> clause enables you to group your results based on a key that you specify. For example you could specify that the results should be grouped by the <code>City</code> so that all customers from London or Paris are in individual groups. In this case, <code>cust.City</code> is the key.</p>
+<div class="codeHeader" id="code-try-5" data-bi-name="code-header"><span class="language">C#</span><button type="button" class="action is-relative" data-bi-name="copy" aria-label="Copy code">
+				<span class="icon">
+					<span class="docon docon-edit-copy" role="presentation"></span>
+				</span>
+				<span>Copy</span>
+				<div class="successful-copy-alert is-absolute has-right-zero has-top-zero has-left-zero has-bottom-zero is-flex has-flex-align-items-center has-flex-justify-content-center has-text-success-invert has-background-success is-transparent" aria-hidden="true">
+					<span class="icon is-size-large">
+						<span class="docon docon-check-mark" role="presentation"></span>
+					</span>
+				</div>
+			</button></div><pre tabindex="0" class="has-inner-focus"><code class="lang-csharp" name="csLINQGettingStarted#28" data-author-content="// queryCustomersByCity is an IEnumerable&lt;IGrouping&lt;string, Customer&gt;&gt;
+  var queryCustomersByCity =
+      from cust in customers
+      group cust by cust.City;
+
+  // customerGroup is an IGrouping&lt;string, Customer&gt;
+  foreach (var customerGroup in queryCustomersByCity)
+  {
+      Console.WriteLine(customerGroup.Key);
+      foreach (Customer customer in customerGroup)
+      {
+          Console.WriteLine(&quot;    {0}&quot;, customer.Name);
+      }
+  }
+"><span><span class="hljs-comment">// queryCustomersByCity is an IEnumerable&lt;IGrouping&lt;string, Customer&gt;&gt;</span>
+  <span class="hljs-keyword">var</span> queryCustomersByCity =
+      <span class="hljs-keyword">from</span> cust <span class="hljs-keyword">in</span> customers
+      <span class="hljs-keyword">group</span> cust <span class="hljs-keyword">by</span> cust.City;
+
+  <span class="hljs-comment">// customerGroup is an IGrouping&lt;string, Customer&gt;</span>
+  <span class="hljs-keyword">foreach</span> (<span class="hljs-keyword">var</span> customerGroup <span class="hljs-keyword">in</span> queryCustomersByCity)
+  {
+      Console.WriteLine(customerGroup.Key);
+      <span class="hljs-keyword">foreach</span> (Customer customer <span class="hljs-keyword">in</span> customerGroup)
+      {
+          Console.WriteLine(<span class="hljs-string">"    {0}"</span>, customer.Name);
+      }
+  }
+</span></code></pre>
+<p>When you end a query with a <code>group</code> clause, your results take the form of a list of lists. Each element in the list is an object that has a <code>Key</code> member and a list of elements that are grouped under that key. When you iterate over a query that produces a sequence of groups, you must use a nested <code>foreach</code> loop. The outer loop iterates over each group, and the inner loop iterates over each group's members.</p>
+<p>If you must refer to the results of a group operation, you can use the <code>into</code> keyword to create an identifier that can be queried further. The following query returns only those groups that contain more than two customers:</p>
+<div class="codeHeader" id="code-try-6" data-bi-name="code-header"><span class="language">C#</span><button type="button" class="action is-relative" data-bi-name="copy" aria-label="Copy code">
+				<span class="icon">
+					<span class="docon docon-edit-copy" role="presentation"></span>
+				</span>
+				<span>Copy</span>
+				<div class="successful-copy-alert is-absolute has-right-zero has-top-zero has-left-zero has-bottom-zero is-flex has-flex-align-items-center has-flex-justify-content-center has-text-success-invert has-background-success is-transparent" aria-hidden="true">
+					<span class="icon is-size-large">
+						<span class="docon docon-check-mark" role="presentation"></span>
+					</span>
+				</div>
+			</button></div><pre tabindex="0" class="has-inner-focus"><code class="lang-csharp" name="csLINQGettingStarted#29" data-author-content="// custQuery is an IEnumerable&lt;IGrouping&lt;string, Customer&gt;&gt;
+var custQuery =
+    from cust in customers
+    group cust by cust.City into custGroup
+    where custGroup.Count() &gt; 2
+    orderby custGroup.Key
+    select custGroup;
+"><span><span class="hljs-comment">// custQuery is an IEnumerable&lt;IGrouping&lt;string, Customer&gt;&gt;</span>
+<span class="hljs-keyword">var</span> custQuery =
+    <span class="hljs-keyword">from</span> cust <span class="hljs-keyword">in</span> customers
+    <span class="hljs-keyword">group</span> cust <span class="hljs-keyword">by</span> cust.City <span class="hljs-keyword">into</span> custGroup
+    <span class="hljs-keyword">where</span> custGroup.Count() &gt; <span class="hljs-number">2</span>
+    <span class="hljs-keyword">orderby</span> custGroup.Key
+    <span class="hljs-keyword">select</span> custGroup;
+</span></code></pre>
+<p>For more information, see <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/group-clause" data-linktype="relative-path">group clause</a>.</p>
+<h2 id="joining" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/basic-linq-query-operations#joining" aria-labelledby="joining"></a>Joining</h2>
+<p>Join operations create associations between sequences that are not explicitly modeled in the data sources. For example you can perform a join to find all the customers and distributors who have the same location. In LINQ the <code>join</code> clause always works against object collections instead of database tables directly.</p>
+<div class="codeHeader" id="code-try-7" data-bi-name="code-header"><span class="language">C#</span><button type="button" class="action is-relative" data-bi-name="copy" aria-label="Copy code">
+				<span class="icon">
+					<span class="docon docon-edit-copy" role="presentation"></span>
+				</span>
+				<span>Copy</span>
+				<div class="successful-copy-alert is-absolute has-right-zero has-top-zero has-left-zero has-bottom-zero is-flex has-flex-align-items-center has-flex-justify-content-center has-text-success-invert has-background-success is-transparent" aria-hidden="true">
+					<span class="icon is-size-large">
+						<span class="docon docon-check-mark" role="presentation"></span>
+					</span>
+				</div>
+			</button></div><pre tabindex="0" class="has-inner-focus"><code class="lang-csharp" name="csLINQGettingStarted#36" data-author-content="var innerJoinQuery =
+    from cust in customers
+    join dist in distributors on cust.City equals dist.City
+    select new { CustomerName = cust.Name, DistributorName = dist.Name };
+"><span><span class="hljs-keyword">var</span> innerJoinQuery =
+    <span class="hljs-keyword">from</span> cust <span class="hljs-keyword">in</span> customers
+    <span class="hljs-keyword">join</span> dist <span class="hljs-keyword">in</span> distributors <span class="hljs-keyword">on</span> cust.City <span class="hljs-keyword">equals</span> dist.City
+    <span class="hljs-keyword">select</span> <span class="hljs-keyword">new</span> { CustomerName = cust.Name, DistributorName = dist.Name };
+</span></code></pre>
+<p>In LINQ, you do not have to use <code>join</code> as often as you do in SQL, because foreign keys in LINQ are represented in the object model as properties that hold a collection of items. For example, a <code>Customer</code> object contains a collection of <code>Order</code> objects. Rather than performing a join, you access the orders by using dot notation:</p>
+<div class="codeHeader" id="code-try-8" data-bi-name="code-header"><span class="language">C#</span><button type="button" class="action is-relative" data-bi-name="copy" aria-label="Copy code">
+				<span class="icon">
+					<span class="docon docon-edit-copy" role="presentation"></span>
+				</span>
+				<span>Copy</span>
+				<div class="successful-copy-alert is-absolute has-right-zero has-top-zero has-left-zero has-bottom-zero is-flex has-flex-align-items-center has-flex-justify-content-center has-text-success-invert has-background-success is-transparent" aria-hidden="true">
+					<span class="icon is-size-large">
+						<span class="docon docon-check-mark" role="presentation"></span>
+					</span>
+				</div>
+			</button></div><pre tabindex="0" class="has-inner-focus"><code class="lang-csharp" data-author-content="from order in Customer.Orders...  
+"><span><span class="hljs-keyword">from</span> order <span class="hljs-keyword">in</span> Customer.Orders...  
+</span></code></pre>
+<p>For more information, see <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/join-clause" data-linktype="relative-path">join clause</a>.</p>
+<h2 id="selecting-projections" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/basic-linq-query-operations#selecting-projections" aria-labelledby="selecting-projections"></a>Selecting (Projections)</h2>
+<p>The <code>select</code> clause produces the results of the query and specifies the "shape" or type of each returned element. For example, you can specify whether your results will consist of complete <code>Customer</code> objects, just one member, a subset of members, or some completely different result type based on a computation or new object creation. When the <code>select</code> clause produces something other than a copy of the source element, the operation is called a <em>projection</em>. The use of projections to transform data is a powerful capability of LINQ query expressions. For more information, see <a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/data-transformations-with-linq" data-linktype="relative-path">Data Transformations with LINQ (C#)</a> and <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/select-clause" data-linktype="relative-path">select clause</a>.</p>
+<h2 id="see-also" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/basic-linq-query-operations#see-also" aria-labelledby="see-also"></a>See also</h2>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/dotnet/csharp/linq/" data-linktype="relative-path">LINQ Query Expressions</a></li>
+<li><a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/walkthrough-writing-queries-linq" data-linktype="relative-path">Walkthrough: Writing Queries in C#</a></li>
+<li><a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/query-keywords" data-linktype="relative-path">Query Keywords (LINQ)</a></li>
+<li><a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/anonymous-types" data-linktype="relative-path">Anonymous Types</a></li>
+</ul>
+
+						<!-- </content> -->
+
+						</main>
+
+						<!-- page rating section -->
+								<div class="is-hidden-desktop has-border-top has-margin-top-large has-padding-top-small">
+									
+									
+<div class="feedback-verbatim has-border-bottom has-padding-bottom-small has-margin-bottom-small" data-bi-name="rating">
+    <div class="binary-rating">
+        <div class="binary-rating-buttons">
+            <h3 class="has-text-weight-semibold has-margin-top-none has-margin-bottom-small">Is this page helpful?</h3>
+            <div>
+                <button class="thumb-rating like has-inner-focus has-padding-left-extra-small has-padding-right-extra-small" title="Yes" data-bi-name="rating-yes" aria-expanded="false" data-bi-sat="1" aria-controls="rating-container-mobile">
+                    <span aria-hidden="true" class="icon docon docon-like"></span>
+                    <span>Yes</span>
+                </button>
+                <button class="thumb-rating dislike has-inner-focus has-padding-none has-padding-right-extra-small" title="No" data-bi-name="rating-no" data-bi-sat="0" aria-expanded="false" aria-controls="rating-container-mobile">
+                    <span aria-hidden="true" class="icon docon docon-dislike"></span>
+                    <span>No</span>
+                </button>
+            </div>
+        </div>
+        <form class="feedback-verbatim-form is-hidden" id="rating-container-mobile">
+            <div class="verbatim-textarea box is-relative has-box-shadow-none has-border has-margin-top-small has-padding-extra-small is-size-extra-small">
+                <label for="rating-textarea-mobile" class="visually-hidden">Any additional feedback?</label>
+                <textarea id="rating-textarea-mobile" rows="4" maxlength="999" placeholder="Any additional feedback?" required="" class="textarea has-border-none has-box-shadow-none has-inner-focus"></textarea>
+            </div>
+            <div class="buttons is-right has-margin-top-medium has-margin-right-extra-small">
+                <button class="skip-rating button is-transparent has-text-primary is-small has-border-none" type="button">Skip</button>
+                <button class="submit-rating button is-primary is-small" data-bi-name="rating-verbatim" disabled="" type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+    <div class="thankyou-rating is-hidden" tabindex="-1">
+        <p>Thank you.</p>
+    </div>
+</div>								</div>
+						<!-- end page rating section -->
+
+
+						<!-- feedback section -->
+<section class="feedback-section is-relative" data-bi-name="feedback-section">
+
+    <h2 id="feedback" class="title is-3 has-margin-top-large">Feedback</h2>
+
+    <div class="alert choose-feedback-type">
+        <p aria-hidden="true" id="send-feedback-about">Submit and view feedback for</p>
+
+        <div class="choose-feedback-buttons has-margin-top-medium">
+                <a class="button feedback-type-product has-margin-bottom-small" aria-label="Send feedback about this product" href="https://aka.ms/feedback/report?space=61" data-bi-name="product-feedback">
+                    <span>This product</span>
+                    <span aria-hidden="true" class="icon docon docon-navigate-external is-size-h4 has-margin-left-none"></span>
+                </a>
+
+			<a class="button feedback-type-product has-margin-bottom-small github-link" aria-label="Send feedback about this page" data-bi-name="create-issue-on-github" href="https://github.com/dotnet/docs/issues/new?title=&amp;body=%0A%0A%5BEnter%20feedback%20here%5D%0A%0A%0A---%0A%23%23%23%23%20Document%20Details%0A%0A%E2%9A%A0%20*Do%20not%20edit%20this%20section.%20It%20is%20required%20for%20docs.microsoft.com%20%E2%9E%9F%20GitHub%20issue%20linking.*%0A%0A*%20ID%3A%2035fe4344-db78-b520-a33d-228272ca3201%0A*%20Version%20Independent%20ID%3A%202e1c5463-8c13-07e0-3c04-f3986d1bef27%0A*%20Content%3A%20%5BBasic%20LINQ%20Query%20Operations%20(C%23)%5D(https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fdotnet%2Fcsharp%2Fprogramming-guide%2Fconcepts%2Flinq%2Fbasic-linq-query-operations)%0A*%20Content%20Source%3A%20%5Bdocs%2Fcsharp%2Fprogramming-guide%2Fconcepts%2Flinq%2Fbasic-linq-query-operations.md%5D(https%3A%2F%2Fgithub.com%2Fdotnet%2Fdocs%2Fblob%2Fmaster%2Fdocs%2Fcsharp%2Fprogramming-guide%2Fconcepts%2Flinq%2Fbasic-linq-query-operations.md)%0A*%20Product%3A%20**dotnet-csharp**%0A*%20Technology%3A%20**csharp-linq**%0A*%20GitHub%20Login%3A%20%40BillWagner%0A*%20Microsoft%20Alias%3A%20**wiwagn**">
+				<span aria-hidden="true" class="docon docon-brand-github has-padding-right-extra-small"></span>
+				<span>This page</span>
+			</a>
+        </div>
+    </div>
+
+    <div class="action-container is-flex has-flex-justify-content-end has-margin-top-small has-margin-bottom-small">
+        <a class="view-on-github" data-bi-name="view-on-github" href="https://github.com/dotnet/docs/issues?utf8=%E2%9C%93&amp;q=%222e1c5463-8c13-07e0-3c04-f3986d1bef27%22&amp;in=body">
+            <span aria-hidden="true" class="docon docon-brand-github"></span>
+            <span>View all page feedback</span>
+            <span aria-hidden="true" class="icon docon docon-navigate-external is-size-h5"></span>
+        </a>
+    </div>
+</section>
+
+						<!-- end feedback section -->
+
+						<!-- feedback report section -->
+						<!-- end feedback report section -->
+
+						<div class="footerContainer is-visible-interactive has-default-focus ">
+
+
+
+	<footer id="footer-interactive" data-bi-name="footer" class="footer-layout">
+
+    <div class="is-flex is-full-height has-padding-right-extra-large-desktop">
+			<a data-mscc-ic="false" class="locale-selector-link has-flex-shrink-none" href="https://docs.microsoft.com/en-us/locale?target=https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/basic-linq-query-operations" data-bi-name="select-locale"><span class="icon docon docon-world is-size-large has-margin-right-small" aria-hidden="true"></span><span class="local-selector-link-text">English (United States)</span></a>
+		<div class="has-margin-left-medium has-margin-right-medium has-flex-shrink-none">
+<div class="dropdown has-caret-up">
+	<button class="dropdown-trigger button is-transparent is-small is-icon-only-touch has-inner-focus theme-dropdown-trigger" aria-controls="theme-menu-interactive" aria-expanded="false" title="Theme" data-bi-name="theme">
+		<span class="icon">
+			<span class="docon docon-sun" aria-hidden="true"></span>
+		</span>
+		<span>Theme</span>
+	</button>
+	<div class="dropdown-menu" id="theme-menu-interactive" role="menu">
+		<ul class="theme-selector has-padding-small">
+			<li class="theme is-block">
+				<button class="button is-text is-small theme-control is-fullwidth has-flex-justify-content-start" data-theme-to="light" aria-pressed="false">
+					<span class="theme-light has-margin-right-small">
+						<span class="theme-selector-icon css-variable-support has-border is-inline-block has-body-background" aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background"></rect>
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
+							</svg>
+						</span>
+					</span>
+					<span role="menuitem">
+Light					</span>
+				</button>
+			</li>
+			<li class="theme is-block">
+				<button class="button is-text is-small theme-control is-fullwidth has-flex-justify-content-start is-selected" data-theme-to="dark" aria-pressed="true">
+					<span class="theme-dark has-margin-right-small">
+						<span class="has-border theme-selector-icon css-variable-support is-inline-block has-body-background" aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background"></rect>
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
+							</svg>
+						</span>
+					</span>
+					<span role="menuitem">
+Dark					</span>
+				</button>
+			</li>
+			<li class="theme is-block">
+				<button class="button is-text is-small theme-control is-fullwidth has-flex-justify-content-start" data-theme-to="high-contrast" aria-pressed="false">
+					<span class="theme-high-contrast has-margin-right-small">
+						<span class="has-border theme-selector-icon css-variable-support is-inline-block has-body-background" aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background"></rect>
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
+							</svg>
+						</span>
+					</span>
+					<span role="menuitem">
+High contrast					</span>
+				</button>
+			</li>
+		</ul>
+	</div>
+</div>		</div>
+	</div>
+    <ul class="links" data-bi-name="footerlinks">
+		<li class="manage-cookies-holder" hidden=""></li>
+			<li><a data-mscc-ic="false" href="https://docs.microsoft.com/en-us/previous-versions/" data-bi-name="archivelink">Previous Version Docs</a></li>
+			<li><a data-mscc-ic="false" href="https://docs.microsoft.com/en-us/teamblog" data-bi-name="bloglink">Blog</a></li>
+			<li><a data-mscc-ic="false" href="https://docs.microsoft.com/en-us/contribute" data-bi-name="contributorGuide">Contribute</a></li>
+				<li><a data-mscc-ic="false" href="https://go.microsoft.com/fwlink/?LinkId=521839" data-bi-name="privacy">Privacy &amp; Cookies</a></li>
+			<li><a data-mscc-ic="false" href="https://docs.microsoft.com/en-us/legal/termsofuse" data-bi-name="termsofuse">Terms of Use</a></li>
+				<li><a data-mscc-ic="false" href="https://aka.ms/sitefeedback" data-bi-name="feedback">Site Feedback</a></li>
+			<li><a data-mscc-ic="false" href="https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/EN-US.aspx" data-bi-name="trademarks">Trademarks</a></li>
+		<li>© Microsoft 2020</li>
+    </ul>
+</footer>
+						</div>
+					</div>
+
+					<div class="is-size-small right-container column is-one-quarter is-one-fifth-desktop is-hidden-mobile is-hidden-tablet-only" data-bi-name="pageactions" role="complementary" aria-label="Page Actions">
+						<div id="affixed-right-container" class="doc-outline is-fixed is-vertically-scrollable" style="width: 199.188px; top: 24px; bottom: 24px;">
+								
+								
+<div class="feedback-verbatim has-border-bottom has-padding-bottom-small has-margin-bottom-small" data-bi-name="rating">
+    <div class="binary-rating">
+        <div class="binary-rating-buttons">
+            <h3 class="has-text-weight-semibold has-margin-top-none has-margin-bottom-small">Is this page helpful?</h3>
+            <div>
+                <button class="thumb-rating like has-inner-focus has-padding-left-extra-small has-padding-right-extra-small" title="Yes" data-bi-name="rating-yes" aria-expanded="false" data-bi-sat="1" aria-controls="rating-container-desktop">
+                    <span aria-hidden="true" class="icon docon docon-like"></span>
+                    <span>Yes</span>
+                </button>
+                <button class="thumb-rating dislike has-inner-focus has-padding-none has-padding-right-extra-small" title="No" data-bi-name="rating-no" data-bi-sat="0" aria-expanded="false" aria-controls="rating-container-desktop">
+                    <span aria-hidden="true" class="icon docon docon-dislike"></span>
+                    <span>No</span>
+                </button>
+            </div>
+        </div>
+        <form class="feedback-verbatim-form is-hidden" id="rating-container-desktop">
+            <div class="verbatim-textarea box is-relative has-box-shadow-none has-border has-margin-top-small has-padding-extra-small is-size-extra-small">
+                <label for="rating-textarea-desktop" class="visually-hidden">Any additional feedback?</label>
+                <textarea id="rating-textarea-desktop" rows="4" maxlength="999" placeholder="Any additional feedback?" required="" class="textarea has-border-none has-box-shadow-none has-inner-focus"></textarea>
+            </div>
+            <div class="buttons is-right has-margin-top-medium has-margin-right-extra-small">
+                <button class="skip-rating button is-transparent has-text-primary is-small has-border-none" type="button">Skip</button>
+                <button class="submit-rating button is-primary is-small" data-bi-name="rating-verbatim" disabled="" type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+    <div class="thankyou-rating is-hidden" tabindex="-1">
+        <p>Thank you.</p>
+    </div>
+</div>							<nav id="side-doc-outline" data-bi-name="intopic toc" role="navigation" aria-label="Article Outline">
+								<h3>In this article</h3>
+							<ol><li class=""><a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/basic-linq-query-operations#obtaining-a-data-source">Obtaining a Data Source</a></li><li class=""><a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/basic-linq-query-operations#filtering">Filtering</a></li><li class=""><a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/basic-linq-query-operations#ordering">Ordering</a></li><li class=""><a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/basic-linq-query-operations#grouping">Grouping</a></li><li class=""><a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/basic-linq-query-operations#joining">Joining</a></li><li class="selected"><a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/basic-linq-query-operations#selecting-projections">Selecting (Projections)</a></li><li><a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/basic-linq-query-operations#see-also">See also</a></li></ol></nav>
+						</div>
+					</div>
+
+					<!--end of div.columns -->
+				</div>
+
+			<!--end of .primary-holder -->
+			</section>
+
+			<aside id="interactive-container" class="interactive-container is-visible-interactive column has-body-background-dark ">
+			</aside>
+		</div>
+
+		<!--end of .mainContainer -->
+	</div>
+
+	<div id="openFeedbackContainer" class="openfeedback-container"></div>
+
+	<div class="footerContainer has-default-focus is-hidden-interactive ">
+
+
+
+	<footer id="footer" data-bi-name="footer" class="footer-layout uhf-container has-padding" role="contentinfo">
+
+    <div class="is-flex is-full-height has-padding-right-extra-large-desktop">
+			<a data-mscc-ic="false" class="locale-selector-link has-flex-shrink-none" href="https://docs.microsoft.com/en-us/locale?target=https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/basic-linq-query-operations" data-bi-name="select-locale"><span class="icon docon docon-world is-size-large has-margin-right-small" aria-hidden="true"></span><span class="local-selector-link-text">English (United States)</span></a>
+		<div class="has-margin-left-medium has-margin-right-medium has-flex-shrink-none">
+<div class="dropdown has-caret-up">
+	<button class="dropdown-trigger button is-transparent is-small is-icon-only-touch has-inner-focus theme-dropdown-trigger" aria-controls="theme-menu" aria-expanded="false" title="Theme" data-bi-name="theme">
+		<span class="icon">
+			<span class="docon docon-sun" aria-hidden="true"></span>
+		</span>
+		<span>Theme</span>
+	</button>
+	<div class="dropdown-menu" id="theme-menu" role="menu">
+		<ul class="theme-selector has-padding-small">
+			<li class="theme is-block">
+				<button class="button is-text is-small theme-control is-fullwidth has-flex-justify-content-start" data-theme-to="light" aria-pressed="false">
+					<span class="theme-light has-margin-right-small">
+						<span class="theme-selector-icon css-variable-support has-border is-inline-block has-body-background" aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background"></rect>
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
+							</svg>
+						</span>
+					</span>
+					<span role="menuitem">
+Light					</span>
+				</button>
+			</li>
+			<li class="theme is-block">
+				<button class="button is-text is-small theme-control is-fullwidth has-flex-justify-content-start is-selected" data-theme-to="dark" aria-pressed="true">
+					<span class="theme-dark has-margin-right-small">
+						<span class="has-border theme-selector-icon css-variable-support is-inline-block has-body-background" aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background"></rect>
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
+							</svg>
+						</span>
+					</span>
+					<span role="menuitem">
+Dark					</span>
+				</button>
+			</li>
+			<li class="theme is-block">
+				<button class="button is-text is-small theme-control is-fullwidth has-flex-justify-content-start" data-theme-to="high-contrast" aria-pressed="false">
+					<span class="theme-high-contrast has-margin-right-small">
+						<span class="has-border theme-selector-icon css-variable-support is-inline-block has-body-background" aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background"></rect>
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
+							</svg>
+						</span>
+					</span>
+					<span role="menuitem">
+High contrast					</span>
+				</button>
+			</li>
+		</ul>
+	</div>
+</div>		</div>
+	</div>
+    <ul class="links" data-bi-name="footerlinks">
+		<li class="manage-cookies-holder" hidden=""></li>
+			<li><a data-mscc-ic="false" href="https://docs.microsoft.com/en-us/previous-versions/" data-bi-name="archivelink">Previous Version Docs</a></li>
+			<li><a data-mscc-ic="false" href="https://docs.microsoft.com/en-us/teamblog" data-bi-name="bloglink">Blog</a></li>
+			<li><a data-mscc-ic="false" href="https://docs.microsoft.com/en-us/contribute" data-bi-name="contributorGuide">Contribute</a></li>
+				<li><a data-mscc-ic="false" href="https://go.microsoft.com/fwlink/?LinkId=521839" data-bi-name="privacy">Privacy &amp; Cookies</a></li>
+			<li><a data-mscc-ic="false" href="https://docs.microsoft.com/en-us/legal/termsofuse" data-bi-name="termsofuse">Terms of Use</a></li>
+				<li><a data-mscc-ic="false" href="https://aka.ms/sitefeedback" data-bi-name="feedback">Site Feedback</a></li>
+			<li><a data-mscc-ic="false" href="https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/EN-US.aspx" data-bi-name="trademarks">Trademarks</a></li>
+		<li>© Microsoft 2020</li>
+    </ul>
+</footer>
+	</div>
+
+		<script type="text/x-mathjax-config;executed=true">
+			MathJax.Hub.Config({
+				showMathMenu: false,
+				showMathMenuMSIE: false,
+				tex2jax: {
+					inlineMath: [['$','$'], ['\\(','\\)']],
+					processEscapes: true
+				}
+			});
+			MathJax.Hub.Register.StartupHook("End", function () {
+				document.documentElement.classList.add('mathjax-complete');
+			});
+		</script>
+		<script src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/MathJax.js.download" integrity="sha384-RLsAi7wiVvnmHrRjlVvUjU45C0bfsIBg6Gsxue6azjJi+lA5q5uK+XbGzO3yn5g1" crossorigin="anonymous"></script>
+	<div id="action-panel" role="region" aria-label="Action Panel" class="action-panel has-default-focus" tabindex="-1"></div>
+	<span id="adobe-target-experiment-container" hidden=""></span>
+
+
+<div class="usabilla_live_button_container" role="button" tabindex="0" style="z-index: 99999990; right: 0px; top: 50%; margin-top: 0px; position: fixed; width: 0px; height: 0px; display: none;" aria-label="Usabilla Feedback Button"><iframe src="./Basic LINQ Query Operations (C#) _ Microsoft Docs_files/saved_resource(1).html" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" data-tags="right" title="Usabilla Feedback Button" style="width: 0px; height: 0px; margin: 0px; padding: 0px; border: 0px; overflow: hidden; z-index: 9998; position: absolute; left: 0px; top: 0px; box-shadow: 0px 0px 0px; background-color: transparent;"></iframe></div></body></html>
