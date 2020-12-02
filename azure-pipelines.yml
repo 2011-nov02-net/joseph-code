@@ -3,15 +3,29 @@
 # Add steps that run tests, create a NuGet package, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
+#trigger defines when a pipeline will run
+#list-of-branches syntax:
+# trigger:
+# - main
 trigger:
-- main
+  branches:
+    include:
+      - master
+  paths:
+    include:
+      - SimpleOrderApp
+
+#short for agent pool as in "build agent"
 
 pool:
   vmImage: 'ubuntu-latest'
 
+#variables common to multiple steps
 variables:
   buildConfiguration: 'Release'
 
+#these steps are run in sequence by the build agant,
+#in a directory that contains the most recent push on that branch of the repo
 steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
