@@ -40,12 +40,12 @@ steps:
   displayName: 'dotnet build $(buildConfiguration)'
   workingDirectory: SimpleOrderApp
 
-- task: AzureWebApp@1
-  inputs:
-    azureSubscription: 'f3f9f21d-d2c7-4e29-8aa7-6beab2a7e2e8'
-    appType: webApp
-    appName: SimpleOrderAppWebApp20201202134103
-    package: $(System.DefaultWorkingDirectory)/**/*.zip
+# - task: AzureWebApp@1
+#   inputs:
+#     azureSubscription: 'f3f9f21d-d2c7-4e29-8aa7-6beab2a7e2e8'
+#     appType: webApp
+#     appName: SimpleOrderAppWebApp20201202134103
+#     package: $(System.DefaultWorkingDirectory)/**/*.zip
 
 - task: DotNetCoreCLI@2
   displayName: 'Dotnet Test'
@@ -53,3 +53,19 @@ steps:
     command: 'test'
     arguments: '--configuration $(buildConfiguration)'
     workingDirectory: 'SimpleOrderApp'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'publish'
+    publishWebProjects: true
+    arguments: '--configuration $(buildConfiguration)'
+    zipAfterPublish: false
+    workingDirectory: 'SimpleOrderApp'
+
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Azure subscription 1(f3f9f21d-d2c7-4e29-8aa7-6beab2a7e2e8)'
+    appType: 'webApp'
+    WebAppName: 'SimpleOrderAppWebApp20201202134103'
+    packageForLinux: 'SimplOrderApp/publish'
