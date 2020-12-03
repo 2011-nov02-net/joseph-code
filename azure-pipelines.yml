@@ -52,7 +52,7 @@ steps:
   displayName: run analysis
   
 - task: SonarCloudPublish@1
-displayName: sonar analysis publish
+  displayName: sonar analysis publish
   inputs:
     pollingTimeoutSec: '300'
 
