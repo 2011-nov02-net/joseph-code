@@ -43,6 +43,8 @@ steps:
     scannerMode: 'MSBuild'
     projectKey: '2011-nov02-net_joseph-code'
     projectName: 'SimpleOrderApp'
+    extraProperties: |
+      sonar.exclusions=**/lib/**
 
 - task: UseDotNet@2
   displayName: ".NET Core 3.1.x"
