@@ -60,7 +60,7 @@ steps:
     command: 'publish'
     publishWebProjects: true
     arguments: '--configuration $(buildConfiguration) --output publish'
-    zipAfterPublish: True
+    zipAfterPublish: false
     workingDirectory: 'SimpleOrderApp'
 
 - task: AzureRmWebAppDeployment@4
