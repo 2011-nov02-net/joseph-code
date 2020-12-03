@@ -111,7 +111,7 @@ stages:
   
 - stage: release
   jobs:
-  - deployment: app-Service
+  - deployment: appService
     environment: prod
     strategy:
      runOnce:
