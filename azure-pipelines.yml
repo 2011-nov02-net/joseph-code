@@ -86,7 +86,8 @@ steps:
     arguments: '--configuration $(buildConfiguration) --output publish'
     zipAfterPublish: false
     workingDirectory: 'SimpleOrderApp'
-
+#################################
+#specific to app deployment
 - task: AzureRmWebAppDeployment@4
   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master') )
   inputs:
