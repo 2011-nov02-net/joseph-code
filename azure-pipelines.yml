@@ -34,6 +34,13 @@ steps:
     version: '3.1.x'
     packageType: sdk
 
+
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
   workingDirectory: SimpleOrderApp
+
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'f3f9f21d-d2c7-4e29-8aa7-6beab2a7e2e8'
+    appName: SimpleOrderAppWebApp20201202134103
+    package: $(System.DefaultWorkingDirectory)/**/*.zip
