@@ -48,8 +48,8 @@ steps:
     package: $(System.DefaultWorkingDirectory)/**/*.zip
 
 - task: DotNetCoreCLI@2
+  displayName: 'Dotnet Test'
   inputs:
     command: 'test'
     arguments: '--configuration $(buildConfiguration)'
-    testRunTitle: 'Dotnet Test'
     workingDirectory: 'SimpleOrderApp'
