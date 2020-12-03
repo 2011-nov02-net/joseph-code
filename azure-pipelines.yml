@@ -86,6 +86,12 @@ steps:
     arguments: '--configuration $(buildConfiguration) --output publish'
     zipAfterPublish: false
     workingDirectory: 'SimpleOrderApp'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: 'SimpleOrderApp/publish'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
 #################################
 #specific to app deployment
 - task: AzureRmWebAppDeployment@4
