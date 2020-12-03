@@ -42,5 +42,6 @@ steps:
 - task: AzureWebApp@1
   inputs:
     azureSubscription: 'f3f9f21d-d2c7-4e29-8aa7-6beab2a7e2e8'
+    appType: webApp
     appName: SimpleOrderAppWebApp20201202134103
     package: $(System.DefaultWorkingDirectory)/**/*.zip
