@@ -68,4 +68,4 @@ steps:
     azureSubscription: 'Azure subscription 1(f3f9f21d-d2c7-4e29-8aa7-6beab2a7e2e8)'
     appType: 'webApp'
     WebAppName: 'SimpleOrderAppWebApp20201202134103'
-    packageForLinux: 'SimplOrderApp/publish'
+    packageForLinux: 'SimpleOrderApp/publish'
