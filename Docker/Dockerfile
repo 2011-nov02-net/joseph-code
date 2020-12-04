@@ -1,0 +1,5 @@
+FROM mcr.microsoft.come/dotnet/runtime:5.0
+
+COPY publish/ /app
+
+CMD dotnet /app/DockerConsoleApp.dll
